@@ -8,9 +8,9 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+use app\assets\AdminAsset;
 
-AppAsset::register($this);
+AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'Панель администратора',
         'brandUrl' => Yii::$app->homeUrl,
         'renderInnerContainer' => true,
         'options' => [
@@ -50,8 +50,8 @@ AppAsset::register($this);
                 ['label' => ''],
             
             Yii::$app->user->isGuest ? 
-                ['label' => 'Войти', 'url' => ['/site/login']] : 
-                    ['label' => 'Выйти ('.Yii::$app->user->identity->username.')', 'url' => ['/site/logout'], 'post'],
+                ['label' => 'Войти', 'url' => ['/login']] : 
+                    ['label' => 'Выйти ('.Yii::$app->user->identity->username.')', 'url' => ['/login/logout'], 'post'],
         ],
     ]);
     NavBar::end();
@@ -69,8 +69,6 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 

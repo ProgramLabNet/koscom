@@ -26,7 +26,8 @@ class LoginForm extends Model
     {
         return [
             [['username_or_email', 'password'], 'filter', 'filter' => 'trim'],
-            [['username_or_email', 'password'], 'required'],
+            [['username_or_email'], 'required', 'message' => 'Имя пользователя или E-mail не может быть пустым.'],
+            [['password'], 'required', 'message' => 'Пароль не может быть пустым.'],
             ['username_or_email', 'validateUsernameOrEmail'],
             ['password', 'validatePassword'],
         ];

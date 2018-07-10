@@ -1,0 +1,29 @@
+.form-help{
+    padding: 20px;
+    background-color: #eee;
+    border-radius: 6px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+button.button-help{
+    background-color: #00a3ff;
+    padding: 10px;
+    width: 30%;
+    font-size: 15px;
+    color: #fff;
+    border-radius: 6px;
+}
+
+button.button-help:hover{
+    background-color: #777;
+    padding: 10px;
+}
+
+button.button-help:active{
+    background-color: #777;
+    padding: 10px;
+}
+
+.form-help h2{
+    margin: 10px 0 20px 0;
+} 
