@@ -1,0 +1,88 @@
+#main-slider{
+    width: 100%;
+    height: 300px;
+    background-color: gray;
+    padding: 0;
+}
+
+.for-admin{
+    height: 30px;
+    background-color: #ededed;
+    
+}
+
+.for-admin ul{
+    height: 30px; 
+}
+
+.for-admin ul li a{
+    height: 30px;
+    padding: 5px 15px;
+    font-size: 10px;
+}
+
+.for-users{
+    font-size: 14px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.wrap > .container{
+    padding: 0;
+}
+
+.wrap{
+    padding: 80px 0 70px 0;
+}
+
+.nav > li{
+    display: inline-block;
+}
+
+.main-menu{
+    position: relative;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #00a3ff;
+    background-color: transparent;
+}
+
+.sub-menu{
+    list-style: none;
+    left: 0px;
+    top: 100%;
+    position: absolute;
+    padding: 15px 20px 15px 20px;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    line-height: 2;
+    width: 300px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.sub-menu li{
+    padding: 0 10px 0 10px;
+}
+
+.main-menu li:hover > .sub-menu{
+    opacity: 0.9;
+    visibility: visible;
+}
+
+.sub-menu li:hover{
+    background-color: #e6f5fd;
+}
+.sub-menu li:hover a{
+    opacity: 1;
+    color: #00a3ff;
+}
+
+.sub-menu a{
+    color: #777;
+}
+
+#content_in_content{
+    padding: 20px;
+}

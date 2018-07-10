@@ -5,6 +5,7 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -27,50 +28,59 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'renderInnerContainer' => true,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Главная', 'url' => ['/site']],
-            ['label' => 'Контакты', 'url' => ['/contacts']],
-            
-            !Yii::$app->user->isGuest ?
-            ['label' => 'Рестрация', 'url' => ['/admin/default/signup']]:
-                ['label' => ''],
-            
-            !Yii::$app->user->isGuest ?
-            ['label' => 'Admin', 'url' => ['/admin/default/index']]:
-                ['label' => ''],
-            
-            Yii::$app->user->isGuest ? 
-                ['label' => 'Войти', 'url' => ['/site/login']] : 
-                    ['label' => 'Выйти ('.Yii::$app->user->identity->username.')', 'url' => ['/site/logout'], 'post'],
-        ],
-    ]);
-    NavBar::end();
-    ?>
+    
+    <nav class="navbar navbar-default navbar-fixed-top container navbar-main" role="navigation"> 
+        <div class="container for-admin">
+            <ul class="navbar-nav navbar-right nav">
+                <?php if(Yii::$app->user->isGuest): ?>
+                    <li><a href="<?= Url::toRoute(['/site/login']); ?>">ВОЙТИ</a></li>
+                <?php endif; ?>
+                <?php if(!Yii::$app->user->isGuest): ?>
+                    <li><a href="<?= Url::toRoute(['/admin/default/index']); ?>">ADMIN</a></li>
+                    <li><a href="<?= Url::toRoute(['/site/logout']); ?>">ВЫЙТИ<?= '('.Yii::$app->user->identity->username.')'?></a></li>
+                <?php endif; ?>
+            </ul>
+        </div>
+        <div class="container for-users">
+            <ul class="navbar-nav navbar-left nav main-menu">
+                <li><a href="<?= Url::toRoute(['/']); ?>">ГЛАВНАЯ</a></li>
+                <li><a href="<?= Url::toRoute(['/news']); ?>">НОВОСТИ</a></li>
+                <li><a href="#">ФЕДЕРАЛЬНЫЙ СЕТЕВОЙ ОПЕРАТОР</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Описание</a></li>
+                        <li><a href="#">Нормативная документация</a></li>
+                        <li><a href="#">История</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">СЕРВИСЫ ИФСО</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Перечень сервисов с описаниями</a></li>
+                        <li><a href="#">Принципы работы ИФСО</a></li>
+                        <li><a href="#">Взаимодействие с разработчиками</a></li>
+                        <li><a href="#">Создание нового сервиса</a></li>
+                        <li><a href="#">Истории успеха</a></li>
+                    </ul>
+                </li>
+                <li><a href="<?= Url::toRoute(['/results']); ?>">РЕЗУЛЬТАТЫ КОСМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ</a></li>
+                <li><a href="<?= Url::toRoute(['/contacts']); ?>">КОНТАКТЫ</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-        <?= $content ?>
+        <div id="main-slider"></div>
+        <div id="content_in_content">
+            <?= $content ?>
+        </div>
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 
