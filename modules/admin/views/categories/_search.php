@@ -24,6 +24,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'level') ?>
 
     <?= $form->field($model, 'status') ?>
+    
+    <?= $form->field($model, 'position') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 

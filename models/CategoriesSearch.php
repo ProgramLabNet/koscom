@@ -47,6 +47,7 @@ class CategoriesSearch extends Categories
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize' => 10],
         ]);
 
         $this->load($params);
@@ -63,6 +64,7 @@ class CategoriesSearch extends Categories
             'parent_id' => $this->parent_id,
             'level' => $this->level,
             'status' => $this->status,
+            'position' => $this->position,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

@@ -19,6 +19,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'level')->dropDownList([1 =>1, 2=>2]) ?>
 
     <?= $form->field($model, 'status')->dropDownList([1=>'Активный', 0=>'Не активный']) ?>
+    
+    <?= $form->field($model, 'position')->textInput() ?>
+    
+    <?= $form->field($model, 'url')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

@@ -1,0 +1,9 @@
+@font-face {font-family: "Elektra Light Pro";
+  src: url("../fonts/ElektraLightPro/f50b2e5307a66e2c1ca6a39f91ce268d.eot"); /* IE9*/
+  src: url("../fonts/ElektraLightPro/f50b2e5307a66e2c1ca6a39f91ce268d.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/ElektraLightPro/f50b2e5307a66e2c1ca6a39f91ce268d.woff2") format("woff2"), /* chrome、firefox */
+  url("../fonts/ElektraLightPro/f50b2e5307a66e2c1ca6a39f91ce268d.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/ElektraLightPro/f50b2e5307a66e2c1ca6a39f91ce268d.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/ElektraLightPro/f50b2e5307a66e2c1ca6a39f91ce268d.svg#Elektra Light Pro") format("svg"); /* iOS 4.1- */
+}
+

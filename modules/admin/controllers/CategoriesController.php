@@ -8,6 +8,7 @@ use app\models\CategoriesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
 
 /**
  * CategoriesController implements the CRUD actions for Categories model.
@@ -36,7 +37,7 @@ class CategoriesController extends Controller
     public function actionIndex()
     {
         $searchModel = new CategoriesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -92,7 +93,12 @@ class CategoriesController extends Controller
     {
         $model = $this->findModel($id);
         
-        $parent_id = $model->getParentId();
+       /*if($_POST['Categories']){
+            echo '<pre>';
+            print_r($_POST['Categories']);
+            print_r($model);
+            echo '</pre>';
+        }*/
         
         if(!$model->isNewRecord){
             $model->updated_at = date('Y-m-d H:i:s');
@@ -101,6 +107,8 @@ class CategoriesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
+        
+        $parent_id = $model->getParentId();
 
         return $this->render('update', [
             'model' => $model, 'parent_id' => $parent_id

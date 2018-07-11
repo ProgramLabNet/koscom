@@ -1,3 +1,12 @@
+body{
+    font-family: "Elektra Light Pro", sans-serif !important;
+    color: rgb(142,142,142) !important;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: "Elektra Light Pro Bold", sans-serif !important;
+}
+
 #main-slider{
     width: 100%;
     height: 410px;
@@ -19,6 +28,10 @@
     height: 30px;
     padding: 5px 15px;
     font-size: 10px;
+}
+
+.navbar-default .navbar-nav > li > a{
+    color: rgb(30,24,70); 
 }
 
 .for-users{
@@ -43,7 +56,7 @@
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    color: #00a3ff;
+    color: rgb(0,166,228);
     background-color: transparent;
 }
 
@@ -72,11 +85,11 @@
 }
 
 .sub-menu li:hover{
-    background-color: #e6f5fd;
+    background-color: rgb(232,245,255);
 }
 .sub-menu li:hover a{
     opacity: 1;
-    color: #00a3ff;
+    color: rgb(0,166,228);
 }
 
 .sub-menu a{

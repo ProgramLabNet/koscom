@@ -22,7 +22,9 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/main.css',
-        'css/help.css'
+        'css/help.css',
+        'public/css/electralightpro.css',
+        'public/css/electrolightprobold.css'
     ];
     public $js = [
     ];

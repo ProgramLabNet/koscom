@@ -1,0 +1,9 @@
+@font-face {font-family: "Elektra Light Pro Bold";
+  src: url("../fonts/ElektraLightProBold/7ca1c44c7f3d3302a56c890edec79361.eot"); /* IE9*/
+  src: url("../fonts/ElektraLightProBold/7ca1c44c7f3d3302a56c890edec79361.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/ElektraLightProBold/7ca1c44c7f3d3302a56c890edec79361.woff2") format("woff2"), /* chrome、firefox */
+  url("../fonts/ElektraLightProBold/7ca1c44c7f3d3302a56c890edec79361.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/ElektraLightProBold/7ca1c44c7f3d3302a56c890edec79361.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/ElektraLightProBold/7ca1c44c7f3d3302a56c890edec79361.svg#Elektra Light Pro Bold") format("svg"); /* iOS 4.1- */
+}
+
