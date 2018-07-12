@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Categories;
+use app\models\Articles;
 
 /**
- * CategoriesSearch represents the model behind the search form of `app\models\Categories`.
+ * ArticlesSearch represents the model behind the search form of `app\models\Articles`.
  */
-class CategoriesSearch extends Categories
+class ArticlesSearch extends Articles
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,8 @@ class CategoriesSearch extends Categories
     public function rules()
     {
         return [
-            [['id', 'parent_id', 'level', 'status', 'position'], 'integer'],
-            [['name', 'created_at', 'updated_at', 'url'], 'safe'],
+            [['id', 'status', 'category_id'], 'integer'],
+            [['title', 'lead', 'body', 'main_image', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -41,13 +41,12 @@ class CategoriesSearch extends Categories
      */
     public function search($params)
     {
-        $query = Categories::find();
+        $query = Articles::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => ['pageSize' => 10],
         ]);
 
         $this->load($params);
@@ -61,17 +60,16 @@ class CategoriesSearch extends Categories
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'parent_id' => $this->parent_id,
-            'level' => $this->level,
             'status' => $this->status,
-            'position' => $this->position,
+            'category_id' => $this->category_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'position' => $this->position,
-            'url' => $this->url
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'lead', $this->lead])
+            ->andFilterWhere(['like', 'body', $this->body])
+            ->andFilterWhere(['like', 'main_image', $this->main_image]);
 
         return $dataProvider;
     }

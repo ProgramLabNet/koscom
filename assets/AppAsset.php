@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/main.css',
         'css/help.css',
+        'css/nomain.css',
         'public/css/electralightpro.css',
         'public/css/electrolightprobold.css'
     ];

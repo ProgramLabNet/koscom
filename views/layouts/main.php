@@ -31,6 +31,8 @@ AppAsset::register($this);
 <div class="wrap">
     
     <nav class="navbar navbar-default navbar-fixed-top container navbar-main" role="navigation"> 
+        
+        <!--start Панель для админа-->
         <div class="container for-admin">
             <ul class="navbar-nav navbar-right nav">
                 <?php if(Yii::$app->user->isGuest): ?>
@@ -42,10 +44,13 @@ AppAsset::register($this);
                 <?php endif; ?>
             </ul>
         </div>
+        <!--end Панель для админа-->
+        
+        <!--start Панель для пользователя-->
         <div class="container for-users">
             <ul class="navbar-nav navbar-left nav main-menu">
                 <?php foreach(Categories::getCategoriesForNavMenu() as $key=>$nav):?>
-                    <li><a href="<?= Url::toRoute(['/']); ?>"><?= $nav['name']?></a>
+                    <li><a href="<?= Url::toRoute([$nav['url']])?>"><?= $nav['name']?></a>
                         <?php if($nav['children']): ?>
                             <ul class="sub-menu">
                                 <?php foreach($nav['children'] as $k_sub_nuv => $v_sub_nav): ?>
@@ -57,8 +62,10 @@ AppAsset::register($this);
                 <?php endforeach; ?>
             </ul>
         </div>
+        <!--end Панель для пользователя-->
+        
     </nav>
-
+    
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

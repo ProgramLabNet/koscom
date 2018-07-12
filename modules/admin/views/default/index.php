@@ -11,7 +11,9 @@
             </div>
             <div class="col-lg-4">
                 <div class="admin-card">
-                    <h3>Навигация</h3>
+                    <h3>Статьи</h3>
+                    <p>Управление статьями: добавление, редактирование, удаление.</p>
+                    <a href="/admin/articles"><button type="submit" class="admin-button">Перейти</button></a>
                 </div>
             </div>
             <div class="col-lg-4">
