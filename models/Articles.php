@@ -22,9 +22,9 @@ use app\models\Categories;
  */
 class Articles extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+    //введено дополнительное свойство для загрузки изображения из формы
+    public $upload_image;
+    
     public static function tableName()
     {
         return 'articles';
@@ -42,6 +42,7 @@ class Articles extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'main_image'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'id']],
+            [['upload_image'], 'file', 'extensions' => 'png, jpg'],
         ];
     }
 

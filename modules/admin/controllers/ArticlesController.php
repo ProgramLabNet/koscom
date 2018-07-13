@@ -8,6 +8,8 @@ use app\models\ArticlesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\UploadImage;
+use yii\web\UploadedFile;
 
 /**
  * ArticlesController implements the CRUD actions for Articles model.
@@ -65,10 +67,30 @@ class ArticlesController extends Controller
     public function actionCreate()
     {
         $model = new Articles();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        
+        $upload_image_model = new UploadImage();
+        
+        
+        if ($model->load(Yii::$app->request->post())){
+            //загрузка в поле imageFile модели UploadImage экз. класса UploadedFile из формы значения поля upload_image
+            $upload_image_model->imageFile = UploadedFile::getInstance($model, 'upload_image');
+            
+            if ($upload_image_model->upload() && $upload_image_model->imageFileToDb) {
+                
+                $model->main_image = $upload_image_model->imageFileToDb;
+            }
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
+        
+
+        /*if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            
+            
+            
+            return $this->redirect(['view', 'id' => $model->id]);
+        }*/
 
         return $this->render('create', [
             'model' => $model,
