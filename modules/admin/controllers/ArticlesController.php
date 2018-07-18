@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\UploadImage;
 use yii\web\UploadedFile;
+use app\models\Categories;
 
 /**
  * ArticlesController implements the CRUD actions for Articles model.
@@ -68,34 +69,48 @@ class ArticlesController extends Controller
     {
         $model = new Articles();
         
-        $upload_image_model = new UploadImage();
+        $categories = new Categories();
+        $arr_categories = $categories->getWhithOutChildrenId();
         
-        
-        if ($model->load(Yii::$app->request->post())){
-            //загрузка в поле imageFile модели UploadImage экз. класса UploadedFile из формы значения поля upload_image
-            $upload_image_model->imageFile = UploadedFile::getInstance($model, 'upload_image');
-            
-            if ($upload_image_model->upload() && $upload_image_model->imageFileToDb) {
-                
-                $model->main_image = $upload_image_model->imageFileToDb;
-            }
-            if($model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if($model->isNewRecord){
+            $model->created_at = date('Y-m-d H:i:s');
         }
         
-
-        /*if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
-            
-            
-            return $this->redirect(['view', 'id' => $model->id]);
-        }*/
+       $this->getUploadedFile($model);
 
         return $this->render('create', [
             'model' => $model,
+            'arr_categories' => $arr_categories,
         ]);
     }
+    
+    
+    public function getUploadedFile($model){
+        
+        $upload_image_model = new UploadImage();
+        
+        if ($model->load(Yii::$app->request->post())){
+           //загрузка в поле imageFile модели UploadImage экз. класса UploadedFile из формы значения поля upload_image
+           $upload_image_model->imageFile = UploadedFile::getInstance($model, 'upload_image');
+           
+           $upload_image_model->previewImageFile = UploadedFile::getInstance($model, 'upload_preview_image');
+           
+           if ($upload_image_model->upload()) {
+               if($upload_image_model->imageFileToDb){
+                    $model->main_image = $upload_image_model->imageFileToDb;
+               }
+               if($upload_image_model->previewImageFileToDb){
+                   $model->preview_image = $upload_image_model->previewImageFileToDb;
+               }
+           }
+           
+           if($model->save()){
+               return $this->redirect(['view', 'id' => $model->id]);
+           }
+        }
+        return;
+    }
+    
 
     /**
      * Updates an existing Articles model.
@@ -107,13 +122,19 @@ class ArticlesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        
+        $categories = new Categories();
+        $arr_categories = $categories->getWhithOutChildrenId();
+        
+        if(!$model->isNewRecord){
+            $model->updated_at = date('Y-m-d H:i:s');
         }
+
+        $this->getUploadedFile($model);
 
         return $this->render('update', [
             'model' => $model,
+            'arr_categories' => $arr_categories,
         ]);
     }
 

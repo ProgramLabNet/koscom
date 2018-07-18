@@ -93,13 +93,6 @@ class CategoriesController extends Controller
     {
         $model = $this->findModel($id);
         
-       /*if($_POST['Categories']){
-            echo '<pre>';
-            print_r($_POST['Categories']);
-            print_r($model);
-            echo '</pre>';
-        }*/
-        
         if(!$model->isNewRecord){
             $model->updated_at = date('Y-m-d H:i:s');
         }

@@ -9,10 +9,10 @@ use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+use app\assets\NewsAsset;
 use app\models\Categories;
 
-AppAsset::register($this);
+NewsAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

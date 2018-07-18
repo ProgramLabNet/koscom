@@ -1,47 +1,21 @@
 .ctegory_panel{
-    padding: 0;
-    margin: 30px 0 40px 0;
-    text-align: center;
+    width: 100%;
+    height: 120px;
+    background-color: rgb(243,243,243);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgb(211,211,211);
+    
 }
 
-.news-cols{
-    padding: 0 5px 0 5px;
+.ctegory_panel span{
+    margin: 0;
+    font-family: "Elektra Light Pro", sans-serif;
+    font-size: 20px;
+    color: rgb(30,24,70);
 }
 
-.news-size{
-    height: 460px;
-    background-color: rgb(211,211,211);
-}
 
-.news-image{
-    height: 270px;
-    background-color: green;
-}
-
-.news-text{
-    height: 150px;
-    background-color: cyan;
-    margin: 20px;
-}
-
-.news-more{
-    position: absolute;
-    bottom: 20px;
-    font-family: Elektra Light Pro Bold, sans-serif;
-}
-
-.news-more a{
-    color: #3a3a3a;
-}
-
-.news-more a:hover{
-    color: rgb(0,166,228);
-}
-
-.news-created{
-   position: absolute;
-   bottom: 50px;
-   font-size: 13px;
-}
 
     

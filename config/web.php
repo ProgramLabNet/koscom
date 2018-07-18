@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' => 'ru-RU',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -52,12 +53,30 @@ $config = [
             'rules' => [
             ],
         ],
-        
     ],
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
         ],
+    ],
+    'controllerMap' => [
+
+        'elfinder' => [
+
+            'class' => 'mihaildev\elfinder\PathController',
+
+            'access' => ['@'],
+
+            'root' => [
+
+                'path' => 'uploads/global',
+
+                'name' => 'Global'
+
+            ],
+
+        ]
+
     ],
     'params' => $params,
 ];

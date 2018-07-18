@@ -24,6 +24,7 @@ class Articles extends \yii\db\ActiveRecord
 {
     //введено дополнительное свойство для загрузки изображения из формы
     public $upload_image;
+    public $upload_preview_image;
     
     public static function tableName()
     {
@@ -43,6 +44,7 @@ class Articles extends \yii\db\ActiveRecord
             [['title', 'main_image'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['upload_image'], 'file', 'extensions' => 'png, jpg'],
+            [['upload_preview_image'], 'file', 'extensions' => 'png, jpg'],
         ];
     }
 
@@ -56,11 +58,14 @@ class Articles extends \yii\db\ActiveRecord
             'title' => 'Заголовок',
             'lead' => 'Первый абзац',
             'body' => 'Текст',
-            'main_image' => 'Изображение',
+            'main_image' => 'Главное изображение',
+            'preview_image' => 'Превью изображения',
             'status' => 'Статус',
             'category_id' => 'ID Категории',
             'created_at' => 'Дата создания',
             'updated_at' => 'Дата редактирования',
+            'upload_image' => 'Главное изображение',
+            'upload_preview_image' => 'Превью изображение'
         ];
     }
 
@@ -70,5 +75,31 @@ class Articles extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Categories::className(), ['id' => 'category_id']);
+    }
+    
+    public function getNews($param, $offset = 0){
+        
+       $news = self::find()->andWhere(['category_id' => $param])->andWhere(['status' => 1])->orderBy(['created_at' => SORT_DESC])->offset($offset)->limit(12)->all();
+     
+       return $news;
+    }
+    
+    public static function getPreviewImage($image){
+        
+        return '/web/uploads/preview/'.$image;
+    }
+    
+    public static function getNoPreviewImage(){
+        
+        return '/web/public/no_image.png';
+    }
+    
+    public static function getDate($date){
+        
+        $date_arr = explode(" ", $date);
+        $new_date_arr = explode("-", $date_arr[0]); 
+        $date_str = $new_date_arr[2] . '.' . $new_date_arr[1] . '.' . $new_date_arr[0];
+        
+        return $date_str;
     }
 }

@@ -53,6 +53,27 @@ class Categories extends \yii\db\ActiveRecord
         return $parent_id;
     }
     
+    public function getWhithOutChildrenId(){
+        
+        $all_categories = self::getCategoriesForNavMenu();
+        
+        if($all_categories){
+            $exit_arr = [];
+            foreach($all_categories as $value){
+                if(!$value['children']){
+                    $exit_arr[$value['id']] = $value['name'];
+                }
+                else{
+                    foreach($value['children'] as $value_children){
+                        $exit_arr[$value_children['id']] = $value_children['name'];
+                    }
+                }
+            }
+        }
+        
+        return $exit_arr;
+    }
+    
     //формирование главного навигационного меню
     public static function getCategoriesForNavMenu()
     {
@@ -101,6 +122,13 @@ class Categories extends \yii\db\ActiveRecord
             return 0;
         }
         return ($a['position'] < $b['position']) ? -1 : 1;
+    }
+    
+    //получение id категории по ее полю 'name'
+    public function getIdByName($name){
+        $cat = Categories::find()->where(['name' => $name])->one();
+        
+        return $cat->id;
     }
 
     /**
