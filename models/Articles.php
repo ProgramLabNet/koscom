@@ -72,6 +72,7 @@ class Articles extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    //связь с таблицей Categories
     public function getCategory()
     {
         return $this->hasOne(Categories::className(), ['id' => 'category_id']);
@@ -82,6 +83,11 @@ class Articles extends \yii\db\ActiveRecord
        $news = self::find()->andWhere(['category_id' => $param])->andWhere(['status' => 1])->orderBy(['created_at' => SORT_DESC])->offset($offset)->limit(12)->all();
      
        return $news;
+    }
+    
+    public static function getMainImage($image){
+        
+        return '/web/uploads/'.$image;
     }
     
     public static function getPreviewImage($image){
@@ -101,5 +107,17 @@ class Articles extends \yii\db\ActiveRecord
         $date_str = $new_date_arr[2] . '.' . $new_date_arr[1] . '.' . $new_date_arr[0];
         
         return $date_str;
+    }
+    
+    public function getOneArticles($id){
+        
+        $article = self::findOne($id);
+        
+        return $article;
+    }
+    
+    public function getLastArticles($id, $category_id){
+        
+        return self::find()->andWhere(['category_id' => $category_id])->andWhere(['status' => 1])->andWhere(['!=', 'id', $id])->orderBy(['created_at' => SORT_DESC])->limit(5)->all();
     }
 }

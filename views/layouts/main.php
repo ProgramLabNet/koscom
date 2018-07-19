@@ -47,7 +47,8 @@ AppAsset::register($this);
         <!--end Панель для админа-->
         
         <!--start Панель для пользователя-->
-        <div class="container for-users">
+        <?php if(Categories::getCategoriesForNavMenu()): ?>
+        <div class="container for-users">  
             <ul class="navbar-nav navbar-left nav main-menu">
                 <?php foreach(Categories::getCategoriesForNavMenu() as $key=>$nav):?>
                     <li><a href="<?= Url::toRoute([$nav['url']])?>"><?= $nav['name']?></a>
@@ -60,8 +61,11 @@ AppAsset::register($this);
                         <?php endif; ?>
                     </li>
                 <?php endforeach; ?>
-            </ul>
+            </ul> 
         </div>
+        <?php else: ?>
+            <div class="container for-users no-categories"></div>
+        <?php endif; ?>
         <!--end Панель для пользователя-->
         
     </nav>
@@ -79,7 +83,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
     </div>
 </footer>
 

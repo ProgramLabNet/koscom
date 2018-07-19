@@ -7,10 +7,12 @@ use app\models\Categories;
 
 class NewsController extends \yii\web\Controller
 {
-    public $layout = 'news';
+    public $layout;
     
     public function actionIndex()
     {
+        $this->layout = 'news';
+        
         $categories = new Categories();
         $category_id = $categories->getIdByName('Новости');
         
@@ -46,5 +48,28 @@ class NewsController extends \yii\web\Controller
         
         echo json_encode($articles_array);
         die;
+    }
+    
+    public function actionArticle($id)
+    {
+        $this->layout = 'article';
+        
+        $articles = new Articles();
+        $categories = new Categories();
+        
+        $article = $articles->getOneArticles($id);
+        
+        if($article->category_id){
+            $lastArticles = $articles->getLastArticles($article->id, $article->category_id);
+            
+            $parentCategories = $categories->getSubCategories($article->category_id);
+            $brothersCategories = $categories->getBrothersCategories($parentCategories->parent_id);
+        }
+        
+        return $this->render('one_article', [
+            'article' => $article,
+            'lastArticles' => $lastArticles,
+            'brothersCategories' => $brothersCategories
+        ]);
     }
 }

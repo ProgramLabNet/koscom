@@ -9,10 +9,10 @@ use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\NewsAsset;
+use app\assets\AppAsset;
 use app\models\Categories;
 
-NewsAsset::register($this);
+AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -47,21 +47,21 @@ NewsAsset::register($this);
         
         <!--start Панель для пользователя-->
         <?php if(Categories::getCategoriesForNavMenu()): ?>
-        <div class="container for-users">
-            <ul class="navbar-nav navbar-left nav main-menu">
-                <?php foreach(Categories::getCategoriesForNavMenu() as $key=>$nav):?>
-                    <li><a href="<?= Url::toRoute([$nav['url']])?>"><?= $nav['name']?></a>
-                        <?php if($nav['children']): ?>
-                            <ul class="sub-menu">
-                                <?php foreach($nav['children'] as $k_sub_nuv => $v_sub_nav): ?>
-                                    <li><a href="#"><?= $v_sub_nav['name']; ?></a></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        <?php endif; ?>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
+            <div class="container for-users">    
+                <ul class="navbar-nav navbar-left nav main-menu">
+                    <?php foreach(Categories::getCategoriesForNavMenu() as $key=>$nav):?>
+                        <li><a href="<?= Url::toRoute([$nav['url']])?>"><?= $nav['name']?></a>
+                            <?php if($nav['children']): ?>
+                                <ul class="sub-menu">
+                                    <?php foreach($nav['children'] as $k_sub_nuv => $v_sub_nav): ?>
+                                        <li><a href="#"><?= $v_sub_nav['name']; ?></a></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?> 
+                </ul>
+            </div>
         <?php else: ?>
             <div class="container for-users no-categories"></div>
         <?php endif; ?>

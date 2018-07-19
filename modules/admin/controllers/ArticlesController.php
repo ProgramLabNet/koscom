@@ -72,11 +72,7 @@ class ArticlesController extends Controller
         $categories = new Categories();
         $arr_categories = $categories->getWhithOutChildrenId();
         
-        if($model->isNewRecord){
-            $model->created_at = date('Y-m-d H:i:s');
-        }
-        
-       $this->getUploadedFile($model);
+        $this->LoadAndSaveModel($model);
 
         return $this->render('create', [
             'model' => $model,
@@ -85,28 +81,45 @@ class ArticlesController extends Controller
     }
     
     
-    public function getUploadedFile($model){
+    public function LoadAndSaveModel($model){
         
         $upload_image_model = new UploadImage();
         
         if ($model->load(Yii::$app->request->post())){
-           //загрузка в поле imageFile модели UploadImage экз. класса UploadedFile из формы значения поля upload_image
-           $upload_image_model->imageFile = UploadedFile::getInstance($model, 'upload_image');
-           
-           $upload_image_model->previewImageFile = UploadedFile::getInstance($model, 'upload_preview_image');
-           
-           if ($upload_image_model->upload()) {
-               if($upload_image_model->imageFileToDb){
-                    $model->main_image = $upload_image_model->imageFileToDb;
-               }
-               if($upload_image_model->previewImageFileToDb){
-                   $model->preview_image = $upload_image_model->previewImageFileToDb;
-               }
-           }
-           
-           if($model->save()){
-               return $this->redirect(['view', 'id' => $model->id]);
-           }
+            //оборачивание в тег <p> со стилем style="text-align:justify"
+            if($model->lead){
+                $str = $model->lead;
+                $find = '<p style="text-align:justify">';
+                
+                $pos = strpos($str, $find);
+                if($pos === FALSE){
+                   $model->lead = '<p style="text-align:justify">'.$model->lead.'</p>'; 
+                }   
+            }
+            //заполнение полей created_at или updated_at в зависимости новая ли запись
+            if($model->isNewRecord){
+                $model->created_at = date('Y-m-d H:i:s');
+            }
+            else{
+                $model->updated_at = date('Y-m-d H:i:s');
+            }
+            //загрузка в поле imageFile модели UploadImage экз. класса UploadedFile из формы значения поля upload_image
+            $upload_image_model->imageFile = UploadedFile::getInstance($model, 'upload_image');
+
+            $upload_image_model->previewImageFile = UploadedFile::getInstance($model, 'upload_preview_image');
+
+            if ($upload_image_model->upload()) {
+                if($upload_image_model->imageFileToDb){
+                     $model->main_image = $upload_image_model->imageFileToDb;
+                }
+                if($upload_image_model->previewImageFileToDb){
+                    $model->preview_image = $upload_image_model->previewImageFileToDb;
+                }
+            }
+
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
         return;
     }
@@ -125,12 +138,8 @@ class ArticlesController extends Controller
         
         $categories = new Categories();
         $arr_categories = $categories->getWhithOutChildrenId();
-        
-        if(!$model->isNewRecord){
-            $model->updated_at = date('Y-m-d H:i:s');
-        }
 
-        $this->getUploadedFile($model);
+        $this->LoadAndSaveModel($model);
 
         return $this->render('update', [
             'model' => $model,

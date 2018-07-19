@@ -130,6 +130,15 @@ class Categories extends \yii\db\ActiveRecord
         
         return $cat->id;
     }
+    
+    public function getSubCategories($category_id){
+     
+        return self::find()->where(['id' => $category_id, 'status' => 1])->one();
+    }
+    
+    public function getBrothersCategories($id){
+        return self::find()->andWhere(['parent_id' => $id])->andWhere(['!=', 'parent_id', 0])->all();
+    }
 
     /**
      * {@inheritdoc}

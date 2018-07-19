@@ -110,3 +110,64 @@ div.news-image a:hover div.img-hover{
 .news-title a{
     color: #3a3a3a;  
 }
+
+.article-main{
+}
+
+.article-bar{
+}
+
+.article-wrap{
+    margin: 15px 0 15px 0;
+}
+
+.article-image img{
+    width: 100%;
+}
+
+.article-lead{
+    margin-top: 20px;
+    width: 100%;
+    font-family: "Elektra Light Pro Bold", sans-serif;
+}
+
+.article-body{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.article-last-news{
+    margin-bottom: 10px;
+    padding: 25px 25px 10px 25px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgb(243,243,243);
+}
+
+.article-last-news span.article-bar-title{
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    display: inline-block;
+    width: 100%;
+    background-color: rgb(230,230,230);
+    color: rgb(30,24,70);
+}
+
+.article-last-news>div{
+    margin-bottom: 15px;  
+}
+
+.article-bar-rubrika{
+    border-bottom: 1px solid rgb(230,230,230);
+    width: 100%;
+    display: inline-block;
+}
+
+.article-last-news span a{
+    color: rgb(30,24,70);
+}
+
+.article-last-news span a:hover{
+    color: rgb(0,166,228);
+}

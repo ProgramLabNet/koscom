@@ -1,8 +1,6 @@
 <?php
     use app\models\Articles;
-    use yii\helpers\Url;
-    
-    
+    use yii\helpers\Url; 
 ?>
 
 <div class="ctegory_panel">
@@ -27,6 +25,9 @@
         <?php 
                     endforeach;
                 endif;
+                if(!$news){
+                    echo $this->render('@app/views/static/NoData.php');
+                }
         ?>
     </div>
 </div>
