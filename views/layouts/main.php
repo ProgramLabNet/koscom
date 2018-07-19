@@ -11,6 +11,29 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\models\Categories;
+use yii\bootstrap\Carousel;
+$carousel = [
+    [
+    'content' => '<img src="/uploads/slider/1-RSS_Slider_Zemlya.jpg"/>',
+    'caption' => '<a href="#"><h2>Заголовок</h2></a>',
+    'options' => []
+    ],
+    [
+    'content' => '<img src="/uploads/slider/2-RSS_Slider_0409.jpg"/>',
+    'caption' => '',
+    'options' => []
+    ],
+    [
+    'content' => '<img src="/uploads/slider/3-RSS_slayder_22.jpg"/>',
+    'caption' => '',
+    'options' => []
+    ],
+    [
+    'content' => '<img src="/uploads/slider/4-RSS_slayder__06_vin.jpg"/>',
+    'caption' => '',
+    'options' => []
+    ]
+];
 
 AppAsset::register($this);
 ?>
@@ -74,7 +97,16 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-        <div id="main-slider">Слайдер</div>
+        <!--<div id="main-slider">-->
+            <?= Carousel::widget([
+                'items' => $carousel,
+                'options' => ['class' => 'carousel slide', 'data-interval' => '5000'],
+                'controls' => [
+                '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
+                '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'
+                ]
+           ]);?>
+        <!--</div>-->
         <div id="content_in_content">
             <?= $content ?>
         </div>
