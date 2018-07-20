@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6{
 .for-admin{
     height: 30px;
     background-color: #ededed;
-    
+    padding: 0 15px 0 15px;
 }
 
 .for-admin ul{
@@ -29,11 +29,16 @@ h1, h2, h3, h4, h5, h6{
     font-size: 10px;
 }
 
-.navbar-default .navbar-nav > li > a{
+.navbar-main a{
     color: rgb(30,24,70); 
 }
 
+.navbar-main a:hover{
+    color: rgb(0,166,228); 
+}
+
 .for-users{
+    background-color: #fff;
     font-size: 14px;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
@@ -46,16 +51,25 @@ h1, h2, h3, h4, h5, h6{
     padding: 0;
 }
 
-.wrap{
-    padding: 80px 0 70px 0;
-}
-
-.nav > li{
-    display: inline-block;
+.navbar-main{
+    padding: 0;
+    position: fixed;
+    z-index: 1000;
 }
 
 .main-menu{
     position: relative;
+    padding: 0 20px;
+    margin: 0;
+}
+
+.main-menu li{
+    display: inline-block;
+    padding: 30px 0;
+}
+
+.main-menu li a{
+    padding: 15px;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
@@ -65,10 +79,9 @@ h1, h2, h3, h4, h5, h6{
 
 .sub-menu{
     list-style: none;
-    left: 0px;
     top: 100%;
     position: absolute;
-    padding: 15px 20px 15px 20px;
+    padding: 15px 20px;
     background-color: #fff;
     opacity: 0;
     visibility: hidden;
@@ -113,4 +126,8 @@ h1, h2, h3, h4, h5, h6{
 
 .carousel-caption{
     padding-bottom: 120px;
+}
+
+.wrap-content{
+    padding-top: 110px;
 }

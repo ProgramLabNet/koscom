@@ -7,7 +7,6 @@ body {
     min-height: 100%;
     height: auto;
     margin: 0 auto -60px;
-    padding: 0 0 60px;
 }
 
 .wrap > .container {
@@ -19,6 +18,7 @@ body {
     background-color: rgb(243,243,243);
     border-top: 1px solid #ddd;
     padding-top: 20px;
+    padding-left: 20px;
 }
 
 .jumbotron {

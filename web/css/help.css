@@ -172,3 +172,20 @@ div.news-image a:hover div.img-hover{
 .article-last-news span a:hover{
     color: rgb(0,166,228);
 }
+
+.main-padding{
+     padding: 0 10px 0 10px;
+}
+
+.main-image{
+   margin: 0 -5px;
+    height: 200px;
+    background-color: gray;
+    margin-top: 25px;
+    overflow: hidden;
+}
+
+.main-image img{
+    width: 580px;
+    
+}
