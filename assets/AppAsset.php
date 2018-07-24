@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         'public/css/electrolightprobold.css'
     ];
     public $js = [
+        'js/nav.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -129,7 +129,7 @@ div.news-image a:hover div.img-hover{
     margin-top: 20px;
     width: 100%;
     font-family: "Elektra Light Pro Bold", sans-serif;
-        font-size: 15px;
+    font-size: 15px;
 }
 
 .article-body{
@@ -178,14 +178,12 @@ div.news-image a:hover div.img-hover{
 }
 
 .main-image{
-   margin: 0 -5px;
+    margin: 0 -5px;
     height: 200px;
-    background-color: gray;
     margin-top: 25px;
     overflow: hidden;
 }
 
 .main-image img{
-    width: 580px;
-    
+    width: 100%;
 }

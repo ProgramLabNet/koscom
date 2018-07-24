@@ -11,24 +11,24 @@ use app\models\Categories;
 use yii\bootstrap\Carousel;
 $carousel = [
     [
-    'content' => '<img src="/uploads/slider/1-RSS_Slider_Zemlya.jpg"/>',
-    'caption' => '<a href="#"><h2>Заголовок</h2></a>',
-    'options' => []
+        'content' => '<img src="/uploads/slider/1-RSS_Slider_Zemlya.jpg"/>',
+        'caption' => '<a href="#"><h2>Заголовок</h2></a>',
+        'options' => []
     ],
     [
-    'content' => '<img src="/uploads/slider/2-RSS_Slider_0409.jpg"/>',
-    'caption' => '',
-    'options' => []
+        'content' => '<img src="/uploads/slider/2-RSS_Slider_0409.jpg"/>',
+        'caption' => '',
+        'options' => []
     ],
     [
-    'content' => '<img src="/uploads/slider/3-RSS_slayder_22.jpg"/>',
-    'caption' => '',
-    'options' => []
+        'content' => '<img src="/uploads/slider/3-RSS_slayder_22.jpg"/>',
+        'caption' => '',
+        'options' => []
     ],
     [
-    'content' => '<img src="/uploads/slider/4-RSS_slayder__06_vin.jpg"/>',
-    'caption' => '',
-    'options' => []
+        'content' => '<img src="/uploads/slider/4-RSS_slayder__06_vin.jpg"/>',
+        'caption' => '',
+        'options' => []
     ]
 ];
 
@@ -49,49 +49,52 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
    
 <div class="wrap">   
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-6">
-                <nav class="container navbar-main"> 
-                    <!--start Панель для админа-->
-                    <div class="for-admin">
-                        <ul class="navbar-nav navbar-right nav">
-                            <?php if(Yii::$app->user->isGuest): ?>
-                                <li><a href="<?= Url::toRoute(['/login']); ?>">ВОЙТИ</a></li>
-                            <?php endif; ?>
-                            <?php if(!Yii::$app->user->isGuest): ?>
-                                <li><a href="<?= Url::toRoute(['/admin/default/index']); ?>">ADMIN</a></li>
-                                <li><a href="<?= Url::toRoute(['/login/logout']); ?>">ВЫЙТИ<?= '('.Yii::$app->user->identity->username.')'?></a></li>
-                            <?php endif; ?>
-                        </ul>
-                    </div>
-                    <!--end Панель для админа-->
-
-                    <!--start Панель для пользователя-->
-                    <?php if(Categories::getCategoriesForNavMenu()): ?>
-                        <div class="for-users">
-                            <ul class="main-menu">
-                                <?php foreach(Categories::getCategoriesForNavMenu() as $key=>$nav):?>
-                                    <li><a href="<?= Url::toRoute([$nav['url']])?>"><?= $nav['name']?></a>
-                                        <?php if($nav['children']): ?>
-                                            <ul class="sub-menu">
-                                                <?php foreach($nav['children'] as $k_sub_nuv => $v_sub_nav): ?>
-                                                    <li><a href="#"><?= $v_sub_nav['name']; ?></a></li>
-                                                <?php endforeach; ?>
-                                            </ul>
-                                        <?php endif; ?>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-
-                    <?php else: ?>
-                        <div class="container for-users no-categories"></div>
-                    <?php endif; ?>
-                    <!--end Панель для пользователя-->
-                </nav>
+    <div class="container">   
+        <nav>
+            <div class="nav-header">
+                <a class="nav-header-link" href="/">РКС</a>
+                <button type="button" class="nav-header-button">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                </button>
             </div>
-        </div>
+            <!--start Панель для админа-->
+            <div class="for-admin">
+                <ul>
+                    <?php if(Yii::$app->user->isGuest): ?>
+                        <li><a href="<?= Url::toRoute(['/login']); ?>">ВОЙТИ</a></li>
+                    <?php endif; ?>
+                    <?php if(!Yii::$app->user->isGuest): ?>
+                        <li><a href="<?= Url::toRoute(['/admin/default/index']); ?>">ADMIN</a></li>
+                        <li><a href="<?= Url::toRoute(['/login/logout']); ?>">ВЫЙТИ<?= '('.Yii::$app->user->identity->username.')'?></a></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+            <!--end Панель для админа-->
+            <!--start Панель для пользователя-->
+            <?php if(Categories::getCategoriesForNavMenu()): ?>    
+                <div class="for-users">
+                    <ul class="main-menu">
+                        <?php foreach(Categories::getCategoriesForNavMenu() as $key=>$nav):?>
+                            <li><a href="<?= Url::toRoute([$nav['url']])?>"><?= $nav['name']?></a>
+                                <?php if($nav['children']): ?>
+                                    <ul class="sub-menu">
+                                        <?php foreach($nav['children'] as $k_sub_nuv => $v_sub_nav): ?>
+                                            <li><a href="#"><?= $v_sub_nav['name']; ?></a></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php else: ?>
+                <div class="for-users no-categories"></div>
+            <?php endif; ?>
+            <!--end Панель для пользователя-->
+        </nav>
+        
         <div class="wrap-content">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -111,7 +114,7 @@ AppAsset::register($this);
             </div>
         </div>
         <footer class="footer">
-                <p class="pull-left">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
+            <p class="pull-left">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
         </footer>
     </div>
 </div>
