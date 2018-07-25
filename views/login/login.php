@@ -8,25 +8,22 @@ use yii\widgets\ActiveForm;
 /* @var $form ActiveForm */
 ?>
 <div class="site-login">
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-4">
-                <div class="form-help">
-                    
-                    <h2>Вход на сайт</h2>
-                    
-                    <?php $form = ActiveForm::begin(); ?>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="form-help">
 
-                        <?= $form->field($model, 'username_or_email')->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'password')->passwordInput() ?>
+                <h2>Вход на сайт</h2>
 
-                        <button type="submit" class="button-help">Отправить</button>
-                    <?php ActiveForm::end(); ?>
-                </div>
+                <?php $form = ActiveForm::begin(); ?>
+
+                    <?= $form->field($model, 'username_or_email')->textInput(['autofocus' => true]) ?>
+                    <?= $form->field($model, 'password')->passwordInput() ?>
+
+                    <button type="submit" class="button-help">Отправить</button>
+                <?php ActiveForm::end(); ?>
             </div>
-            <div class="col-lg-4"></div>
         </div>
+        <div class="col-lg-4"></div>
     </div>
-</div><!-- site-login -->
+</div>

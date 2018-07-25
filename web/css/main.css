@@ -40,6 +40,10 @@ nav{
     list-style: none;
 }
 
+.for-admin ul li{
+    display: inline-block;
+}
+
 .for-admin ul li a{
     padding: 8px 15px;
     font-size: 10px;

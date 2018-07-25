@@ -9,6 +9,9 @@ body {
     margin: 0 auto -60px;
 }
 
+.wrap-content{
+    margin-bottom: 70px;
+}
 
 .footer {
     height: 60px;

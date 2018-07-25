@@ -78,13 +78,13 @@ NewsAsset::register($this);
         <div class="wrap-content">
             <?= $content ?>
         </div>
-
-        <footer class="footer">
-            
-            <p class="pull-left">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
-            
-        </footer>
     </div>
+</div>
+    
+<div class="container">
+    <footer class="footer">
+        <p class="pull-left">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
+    </footer>
 </div>
 <?php $this->endBody() ?>
 </body>

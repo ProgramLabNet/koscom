@@ -1,5 +1,10 @@
 #admin-wrap{
+    margin-top: 40px;
     padding: 15px;
+}
+
+#admin-wrap h2{
+    margin-bottom: 30px;
 }
 
 .admin-card{
@@ -15,7 +20,6 @@
 .admin-button{
     background-color: #00a3ff;
     padding: 10px;
-    width: 30%;
     font-size: 15px;
     color: #fff;
     border-radius: 6px;

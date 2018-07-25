@@ -1,7 +1,7 @@
-<h2>Выбрать действие для администрирования:</h2>
-<div id="admin-wrap">
-    <div class="content">
-        <div class="row">
+<div class="row">
+    <div id="admin-wrap">
+        <h2>Выбрать действие для администрирования:</h2>
+        <div class="content">
             <div class="col-lg-4">
                 <div class="admin-card">
                     <h3>Категории</h3>

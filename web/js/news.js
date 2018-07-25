@@ -35,9 +35,16 @@
                         $.each(data, function(index, value){
                             
                             /* Отбираем по идентификатору блок со статьями и дозаполняем его новыми данными */
-                            $(".row").append('<div class="col-lg-3 news-cols">' +
+                            $(".row").append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 news-cols">' +
                                                     '<div class="news-size">' +
-                                                        '<div class="news-image"><a class="link-img" href="/news/article?id='+ value.id +'"><div class="img-hover"></div><img src="' + (value.preview_image ? "/web/uploads/preview/" + value.preview_image : "/web/public/no_image.png")  + '" alt=""></a></div>' +
+                                                        '<div class="news-image">' +
+                                                            '<a class="link-img" href="/news/article?id='+ value.id +'">' +
+                                                                '<div class="wrap-img">' +
+                                                                    '<div class="img-opacity"></div>' +
+                                                                    '<img src="' + (value.preview_image ? "/web/uploads/preview/" + value.preview_image : "/web/public/no_image.png")  + '" alt="">' +
+                                                                '</div>' +
+                                                            '</a>' +
+                                                        '</div>' +
                                                         '<div class="news-text">'+
                                                             '<span class="news-title"><a href="/news/article?id='+ value.id +'">' + value.title + '</a></span>' +
                                                             '<span class="news-created">Новости&nbsp&nbsp&ndash;&nbsp&nbsp'+ value.created_at +'</span>' +

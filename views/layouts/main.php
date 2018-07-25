@@ -99,7 +99,7 @@ AppAsset::register($this);
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
-            <!--<div id="main-slider">-->
+            <div id="main-slider">
                 <?= Carousel::widget([
                     'items' => $carousel,
                     'options' => ['class' => 'carousel slide', 'data-interval' => '5000'],
@@ -108,15 +108,18 @@ AppAsset::register($this);
                     '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'
                     ]
                ]);?>
-            <!--</div>-->
+            </div>
             <div id="content_in_content">
                 <?= $content ?>
             </div>
         </div>
-        <footer class="footer">
-            <p class="pull-left">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
-        </footer>
     </div>
+</div>
+
+<div class="container">
+    <footer class="footer">
+        <p class="pull-left">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
+    </footer>
 </div>
 <?php $this->endBody() ?>
 </body>

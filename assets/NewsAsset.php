@@ -28,7 +28,8 @@ class NewsAsset extends AssetBundle{
         'public/css/electrolightprobold.css'
     ];
     public $js = [
-        'js/news.js'
+        'js/news.js',
+        'js/nav.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
