@@ -27,42 +27,45 @@ AdminAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'Панель администратора',
-        'brandUrl' => Yii::$app->homeUrl,
-        'renderInnerContainer' => true,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Главная', 'url' => ['/site']],
-            
-            !Yii::$app->user->isGuest ?
-            ['label' => 'Рестрация', 'url' => ['/admin/default/signup']]:
-                ['label' => ''],
-            
-            !Yii::$app->user->isGuest ?
-            ['label' => 'Admin', 'url' => ['/admin/default/index']]:
-                ['label' => ''],
-            
-            Yii::$app->user->isGuest ? 
-                ['label' => 'Войти', 'url' => ['/login']] : 
-                    ['label' => 'Выйти ('.Yii::$app->user->identity->username.')', 'url' => ['/login/logout'], 'post'],
-        ],
-    ]);
-    NavBar::end();
-    ?>
-
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <div id="content_in_content">
+        <div class="nav-admin">
+            <?php
+            NavBar::begin([
+                'brandLabel' => 'Панель администратора',
+                'brandUrl' => Yii::$app->homeUrl,
+                'renderInnerContainer' => true,
+                'options' => [
+                    'class' => 'navbar-inverse navbar-fixed-top',
+                ],
+            ]);
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => [
+                    ['label' => 'Главная', 'url' => ['/site']],
+
+                    /*!Yii::$app->user->isGuest ?
+                    ['label' => 'Рестрация', 'url' => ['/admin/default/signup']]:
+                        ['label' => ''],*/
+
+                    !Yii::$app->user->isGuest ?
+                    ['label' => 'Admin', 'url' => ['/admin/default/index']]:
+                        ['label' => ''],
+
+                    Yii::$app->user->isGuest ? 
+                        ['label' => 'Войти', 'url' => ['/login']] : 
+                            ['label' => 'Выйти ('.Yii::$app->user->identity->username.')', 'url' => ['/login/logout'], 'post'],
+                ],
+            ]);
+            NavBar::end();
+            ?>
+        </div>
+        <div class="content_in_content_admin">
+
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            <?= Alert::widget() ?>
+
             <?= $content ?>
         </div>
     </div>

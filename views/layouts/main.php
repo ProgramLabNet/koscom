@@ -9,29 +9,33 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\models\Categories;
 use yii\bootstrap\Carousel;
+use app\models\Slider1;
+
+$carousel = (Slider1::getCarousel());
+/*
 $carousel = [
     [
-        'content' => '<img src="/uploads/slider/1-RSS_Slider_Zemlya.jpg"/>',
-        'caption' => '<a href="#"><h2>Заголовок</h2></a>',
+        'content' => '<img src="/uploads/slider1/1-RSS_Slider_Zemlya.jpg"/>',
+        'caption' => '<a href="news/article?id=11"><h2>Заголовок</h2></a>',
         'options' => []
     ],
     [
-        'content' => '<img src="/uploads/slider/2-RSS_Slider_0409.jpg"/>',
+        'content' => '<img src="/uploads/slider1/2-RSS_Slider_0409.jpg"/>',
         'caption' => '',
         'options' => []
     ],
     [
-        'content' => '<img src="/uploads/slider/3-RSS_slayder_22.jpg"/>',
+        'content' => '<img src="/uploads/slider1/3-RSS_slayder_22.jpg"/>',
         'caption' => '',
         'options' => []
     ],
     [
-        'content' => '<img src="/uploads/slider/4-RSS_slayder__06_vin.jpg"/>',
+        'content' => '<img src="/uploads/slider1/4-RSS_slayder__06_vin.jpg"/>',
         'caption' => '',
         'options' => []
     ]
 ];
-
+*/
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -99,6 +103,7 @@ AppAsset::register($this);
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
+            <?php if($carousel): ?>
             <div id="main-slider">
                 <?= Carousel::widget([
                     'items' => $carousel,
@@ -109,6 +114,7 @@ AppAsset::register($this);
                     ]
                ]);?>
             </div>
+            <?php endif; ?>
             <div id="content_in_content">
                 <?= $content ?>
             </div>

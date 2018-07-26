@@ -17,6 +17,8 @@ use yii\web\IdentityInterface;
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    
+    const SCENARIO_UPDATE = 'update';
     /**
      * {@inheritdoc}
      */
@@ -35,6 +37,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['isAdmin'], 'integer'],
             [['created_at'], 'safe'],
             [['username', 'email', 'password'], 'string', 'max' => 255],
+            
+            [['username', 'email', 'password'], 'filter', 'filter' => 'trim'],
+            ['username', 'unique', 'targetClass' => self::className()],
+            ['email', 'email'],
+            ['email', 'unique', 'targetClass' => self::className()],
+            ['password', 'string', 'min' => 6, 'max' => 20],
+            ['created_at', 'default', 'value' => date('Y-m-d H:i:s')]
         ];
     }
 
@@ -45,12 +54,21 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'email' => 'Email',
-            'password' => 'Password',
-            'isAdmin' => 'Is Admin',
-            'created_at' => 'Created At',
+            'username' => 'Имя пользователя',
+            'email' => 'E-mail',
+            'password' => 'Пароль',
+            'isAdmin' => 'Вк.Права',
+            'created_at' => 'Дата создания',
         ];
+    }
+    //сценарий для полей редактирования модели User
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        
+        $scenarios[self::SCENARIO_UPDATE] = ['username', 'email', 'isAdmin'];
+        
+        return $scenarios;
     }
     
     //IdentityInterface

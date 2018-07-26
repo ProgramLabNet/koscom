@@ -11,7 +11,7 @@
         <div class="row">
             <div class="article-wrap">
                 <!--start left block-->
-                <div class="col-lg-8">
+                <div class="col-lg-8 col-md-8 col-sm-12">
                     <div class="article-main">
                         <?php if($article->main_image): ?>
                             <div class="article-image">
@@ -31,7 +31,7 @@
                 <!--end left block-->
                 
                 <!--start right block-->
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="article-bar">
                         <?php if($lastArticles): ?>
                             <div class="article-last-news">

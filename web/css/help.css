@@ -51,8 +51,7 @@ button.button-help:active{
 .news-size{
     width: 100%;
     height: 480px;
-    background-color: rgb(243,243,243);
-    
+    background-color: rgb(243,243,243);  
 }
 
 .news-image{
@@ -76,7 +75,7 @@ img.image-img{
 }
 
 .news-image a img{
-    width: 100%;
+    width: 272.5px;
     height: 270px;
 }
 
@@ -87,7 +86,7 @@ img.image-img{
 .img-opacity{
     content: "";
     display: block;
-    width: 100%;
+    width: 272.5px;
     height: 270px;
     position: absolute;
     background-color: rgb(0,166,228);
