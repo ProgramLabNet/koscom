@@ -36,8 +36,8 @@ class Slider1 extends \yii\db\ActiveRecord
             ['created_at', 'default', 'value' => date('Y-m-d H:i:s')],
             [['status'], 'integer'],
             [['created_at'], 'safe'],
-            [['link'], 'string', 'max' => 255],
-            [['link', 'status'], 'required'],
+            [['link', 'title'], 'string', 'min' => 2, 'max' => 255],
+            [['link', 'status', 'title'], 'required'],
             [['upload_image'], 'file', 'extensions' => 'png, jpg']
         ];
     }
@@ -51,6 +51,7 @@ class Slider1 extends \yii\db\ActiveRecord
             'id' => 'ID',
             'upload_image' => 'Выбрать изображение',
             'link' => 'Ссылка',
+            'title' => 'Заголовок',
             'status' => 'Статус',
             'created_at' => 'Дата создания',
         ];
@@ -75,11 +76,11 @@ class Slider1 extends \yii\db\ActiveRecord
         if($model_carousel)
         {
             foreach($model_carousel as $key=>$carousels){
-                $carousel[$key]['content'] = "<img src='@/web/uploads/slider1/".$carousels['image']."/>";
-                $carousel[$key]['caption'] = '<a href="news/article?id=11"><h2>Заголовок</h2></a>';
+                $carousel[$key]['content'] = '<img src="/uploads/slider1/'.$carousels->image.'" />';
+                $carousel[$key]['caption'] = '<a href="news/'.$carousels->link.'"><h2>'.$carousels->title.'</h2></a>';
                 $carousel[$key]['options'] = [];
             }
-        }
+        };
         
        return $carousel;
     }

@@ -19,7 +19,7 @@ class Slider1Search extends Slider1
     {
         return [
             [['id', 'status'], 'integer'],
-            [['image', 'link', 'created_at'], 'safe'],
+            [['image', 'link', 'created_at', 'title'], 'safe'],
         ];
     }
 
@@ -65,7 +65,8 @@ class Slider1Search extends Slider1
         ]);
 
         $query->andFilterWhere(['like', 'image', $this->image])
-            ->andFilterWhere(['like', 'link', $this->link]);
+            ->andFilterWhere(['like', 'link', $this->link])
+            ->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }

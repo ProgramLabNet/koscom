@@ -22,6 +22,8 @@ use yii\widgets\ActiveForm;
     <?php endif; ?>
 
     <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList([1=>1, 0=>0]) ?>
 

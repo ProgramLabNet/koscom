@@ -12,30 +12,7 @@ use yii\bootstrap\Carousel;
 use app\models\Slider1;
 
 $carousel = (Slider1::getCarousel());
-/*
-$carousel = [
-    [
-        'content' => '<img src="/uploads/slider1/1-RSS_Slider_Zemlya.jpg"/>',
-        'caption' => '<a href="news/article?id=11"><h2>Заголовок</h2></a>',
-        'options' => []
-    ],
-    [
-        'content' => '<img src="/uploads/slider1/2-RSS_Slider_0409.jpg"/>',
-        'caption' => '',
-        'options' => []
-    ],
-    [
-        'content' => '<img src="/uploads/slider1/3-RSS_slayder_22.jpg"/>',
-        'caption' => '',
-        'options' => []
-    ],
-    [
-        'content' => '<img src="/uploads/slider1/4-RSS_slayder__06_vin.jpg"/>',
-        'caption' => '',
-        'options' => []
-    ]
-];
-*/
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

@@ -156,7 +156,17 @@ class ArticlesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        
+        if(file_exists('uploads/'.$model->main_image)){
+            unlink('uploads/'.$model->main_image);
+        }
+        
+        if(file_exists('uploads/preview/'.$model->preview_image)){
+            unlink('uploads/preview/'.$model->preview_image);
+        }
+        
+        $model->delete();
 
         return $this->redirect(['index']);
     }

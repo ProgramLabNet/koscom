@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Создать изображение для слайдера 1', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать изображение для Слайдера1', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'image',
             'link',
+            'title',
             'status',
             'created_at',
 

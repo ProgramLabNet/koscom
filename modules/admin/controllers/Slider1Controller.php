@@ -67,6 +67,8 @@ class Slider1Controller extends Controller
     public function actionCreate()
     {
         $model = new Slider1();
+        
+        
 
         if ($model->load(Yii::$app->request->post())) {
             
@@ -80,15 +82,12 @@ class Slider1Controller extends Controller
                 if($upload_slider1_image->slider1ImageToDb){
                     
                     $model->image = $upload_slider1_image->slider1ImageToDb;
+                    
                 }
                 
                 if($model->save()){
                 
                     return $this->redirect(['view', 'id' => $model->id]);
-                }
-                else{
-                    print_r($model->errors);
-                    die;
                 }
             }
             else{
