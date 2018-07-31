@@ -13,12 +13,41 @@ body {
     margin-bottom: 70px;
 }
 
-.footer {
-    height: 60px;
+.footer{
+    /*height: 60px;*/
     background-color: rgb(243,243,243);
     border-top: 1px solid #ddd;
     padding-top: 20px;
     padding-left: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+}
+
+.footer-wrap{
+    position: relative;
+}
+
+.footer-wrap:after{
+    content: "";
+    display:block;
+    clear:both;
+}
+
+.logo-footer{
+    position: absolute;
+}
+
+.logo-footer img{
+    width: 100px;
+}
+
+.footer-wrap p{
+    margin: 0;
+    padding-top: 3px;
+}
+
+.footer-title{
+    padding-left: 130px;
 }
 
 .jumbotron {
@@ -112,4 +141,12 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+
+@media(max-width:767px) {
+    .footer-title{
+        padding-left: 0;
+        padding-top: 30px !important;
+    }
 }

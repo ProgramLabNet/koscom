@@ -56,7 +56,7 @@ button.button-help:active{
 
 .news-image{
     width: 100%;
-    height: 270px;
+    height: 263px;
     overflow: hidden;
 }
 
@@ -75,8 +75,8 @@ img.image-img{
 }
 
 .news-image a img{
-    width: 272.5px;
-    height: 270px;
+    width: 100%;
+    height: 100%;
 }
 
 .news-image a:hover .img-opacity{
@@ -86,8 +86,8 @@ img.image-img{
 .img-opacity{
     content: "";
     display: block;
-    width: 272.5px;
-    height: 270px;
+    width: 100%;
+    height: 100%;
     position: absolute;
     background-color: rgb(0,166,228);
     opacity: 0;
@@ -200,9 +200,9 @@ div.news-image a:hover div.img-hover{
 
 .main-image{
     margin: 0 -5px;
-    height: 200px;
     margin-top: 25px;
     overflow: hidden;
+    position: relative;
 }
 
 .main-image img{
@@ -212,3 +212,23 @@ div.news-image a:hover div.img-hover{
 .site-login{
     margin-top: 50px;
 }
+
+.main-page-link-wrap{
+    position: absolute;
+    width: 100%;
+    padding: 20px 30px;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 3000;
+}
+
+.main-page-link-wrap a{
+    font-family: "Elektra Light Pro Bold", sans-serif;
+    font-size: 15px;
+    color: #fff;
+    width: 100%;
+}
+
+.main-image a:hover .img-opacity{
+    opacity: 0.4;
+}
+

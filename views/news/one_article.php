@@ -68,6 +68,6 @@
         </div>
     </div>
 <?php else: ?>
-    <?= $this->render('/static/404.php') ?>
+    <?= $this->render('/static/NoData.php') ?>
 <?php endif; ?>
 

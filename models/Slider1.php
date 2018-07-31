@@ -77,7 +77,7 @@ class Slider1 extends \yii\db\ActiveRecord
         {
             foreach($model_carousel as $key=>$carousels){
                 $carousel[$key]['content'] = '<img src="/uploads/slider1/'.$carousels->image.'" />';
-                $carousel[$key]['caption'] = '<a href="news/'.$carousels->link.'"><h2>'.$carousels->title.'</h2></a>';
+                $carousel[$key]['caption'] = '<a href="'.$carousels->link.'"><h2>'.$carousels->title.'</h2><span class="glyphicon glyphicon-hand-up"></span></a>';
                 $carousel[$key]['options'] = [];
             }
         };

@@ -9,8 +9,8 @@ use yii\widgets\ActiveForm;
 ?>
 <div class="site-login">
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-4 col-sm-3"></div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="form-help">
 
                 <h2>Вход на сайт</h2>
@@ -24,6 +24,6 @@ use yii\widgets\ActiveForm;
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-4 col-md-4 col-sm-3"></div>
     </div>
 </div>

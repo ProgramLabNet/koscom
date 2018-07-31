@@ -158,11 +158,13 @@ class ArticlesController extends Controller
     {
         $model = $this->findModel($id);
         
-        if(file_exists('uploads/'.$model->main_image)){
+        if(is_file('uploads/'.$model->main_image)){
+            echo 'uploads/'.$model->main_image;
+            die;
             unlink('uploads/'.$model->main_image);
         }
         
-        if(file_exists('uploads/preview/'.$model->preview_image)){
+        if(is_file('uploads/preview/'.$model->preview_image)){
             unlink('uploads/preview/'.$model->preview_image);
         }
         

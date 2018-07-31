@@ -24,6 +24,7 @@ nav{
     background-color: #fff;
     font-size: 14px;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    
 }
 
 .for-admin{
@@ -57,18 +58,39 @@ nav{
 }
 
 .for-users a, .for-admin a{
-    color: rgb(30,24,70); 
+    color: rgb(30,24,70);
 }
 
 .for-users a:hover, .for-admin a:hover{
     color: rgb(0,166,228);
 }
 
+.logo a{
+    cursor: pointer;
+    z-index: 4000;
+    margin: 0;
+}
+
+.logo img{
+    width: 150px;
+    padding: 29px 0;
+    margin-left: 20px;
+}
+
+.logo, .mini-logo{
+    position: absolute;
+}
+
+.mini-logo img{
+    width: 150px;
+}
+
 ul.main-menu{
-    padding: 0;
+    padding: 0 0 0 210px;
     margin: 0;
     position: relative;
     float: left;
+    z-index: 3999;
 }
 
 ul.main-menu li{
@@ -96,6 +118,7 @@ ul.sub-menu{
 }
 
 ul.sub-menu li{
+    width: 100%;
     padding: 0 10px 0 10px;
 }
 
@@ -117,6 +140,27 @@ ul.sub-menu li{
 .sub-menu li:hover a{
     opacity: 1;
     color: rgb(0,166,228);
+}
+
+.else-menu{
+    list-style: none;
+    position: absolute;
+    top:100%;
+    right:0;
+    padding: 0;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    line-height: 2;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    display: block;
+}
+
+li.else:hover .else-menu{
+    opacity: 1;
+    visibility: visible;
+    z-index: 3000;
 }
 
 .slider{
@@ -177,6 +221,10 @@ ul.sub-menu li{
     color: rgb(211,211,211);
 }
 
+.mini-menu{
+    display: none;
+}
+
 /*end nav*/
 
 .no-categories{
@@ -189,7 +237,6 @@ ul.sub-menu li{
 
 #main-slider{
     width: 100%;
-    height: 410px;
     padding: 0;
 }
 
@@ -197,10 +244,31 @@ ul.sub-menu li{
     padding-bottom: 120px;
 }
 
-.carousel-caption a{
+.carousel-caption a h2{
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px;
     color: #fff;
+    border-radius: 10px;
+    font-size: 25px;
 }
 
+.carousel-caption a:hover{
+     color: #fff;
+}
+
+.carousel-caption a h2:hover {
+    opacity: 0.7;
+}
+
+.carousel-caption a{
+    color: #fff;
+    font-size: 30px;
+}
+
+.carousel-caption a span{
+    display: none;
+}
 
 /* media запросы */
 
@@ -221,6 +289,14 @@ ul.sub-menu li{
         padding-bottom: 40px;
     }
     
+    .carousel-caption a h2{
+        font-size: 20px;
+    }
+    
+    .logo{
+        display: none;
+    }
+    
     .nav-header{
         display: block;
     }
@@ -233,27 +309,32 @@ ul.sub-menu li{
         display: none;
         width: 100%;
         position:absolute;
-        z-index: 1998;
+        z-index: 10000;
+    }
+    
+    ul.main-menu{
+        display: none;
     }
 
-    ul.main-menu{
+    ul.mini-menu{
         width: 100%;
         padding-left: 10px;
         padding-right: 10px;
+        display: block;
     }
 
-    ul.main-menu li{
+    ul.mini-menu li{
         width: 100%;
         display: block;
         padding : 10px 0;
         border-bottom: 1px solid rgb(211,211,211);
     }
 
-    ul.main-menu li a{
+    ul.mini-menu li a{
         font-size: 12px;
     }
 
-    ul.main-menu li:last-child{
+    ul.mini-menu li:last-child{
         border-bottom: none;
     }
     ul.sub-menu{
@@ -271,19 +352,49 @@ ul.sub-menu li{
         z-index: 1999;
     }
 
-    /*ul.main-menu li:hover > ul.sub-menu{
-            display: block;
-    }*/
-
     ul.sub-menu li{
         width: 100%;
         border-bottom: none;
-        padding : 3px 0;
+        padding : 3px 10px;
     }
 }
 
 @media (max-width: 768px){
     .carousel-caption{
         padding-bottom: 30px;
+    }
+    
+    .carousel-indicators{
+        position: absolute;
+        bottom: 3px;
+    }
+    
+    .carousel-caption{
+        padding-bottom: 20px;
+    }
+    
+    .carousel-caption a h2{
+       font-size: 17px; 
+    }
+}
+
+@media (max-width: 520px){
+    .carousel-caption a h2{
+        display: none;
+    }
+    
+    .carousel-caption a span{
+        display: block;
+        padding-bottom: 20px;
+    }
+    
+    .carousel-caption a span:before{
+        padding: 5px;
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 5px;
+    }
+    
+    .carousel-caption a span:hover {
+        opacity: 0.7;
     }
 }

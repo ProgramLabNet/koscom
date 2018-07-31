@@ -13,8 +13,10 @@ class NewsController extends \yii\web\Controller
     {
         $this->layout = 'news';
         
+        $uri = $_SERVER['REQUEST_URI'];
+        
         $categories = new Categories();
-        $category_id = $categories->getIdByName('Новости');
+        $category_id = $categories->getIdByUrl($uri);
         
         $articles = new Articles();
         $news = $articles->getNews($category_id);

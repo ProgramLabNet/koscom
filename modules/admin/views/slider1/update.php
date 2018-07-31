@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Slider1 */
 
-$this->title = 'Редактировать Слайдер1: ' . $model->image;
+$this->title = 'Редактировать Слайдер1: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Слайдер1', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->image, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Редактировать';
 ?>
 <div class="slider1-update">

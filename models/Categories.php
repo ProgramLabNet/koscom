@@ -57,9 +57,10 @@ class Categories extends \yii\db\ActiveRecord
         
         $all_categories = self::getCategoriesForNavMenu();
         
-        if($all_categories){
+        if($all_categories['whithout_else_arr']){
+            
             $exit_arr = [];
-            foreach($all_categories as $value){
+            foreach($all_categories['whithout_else_arr'] as $value){
                 if(!$value['children']){
                     $exit_arr[$value['id']] = $value['name'];
                 }
@@ -96,11 +97,38 @@ class Categories extends \yii\db\ActiveRecord
                 }
             }
             
-            $result_arr = self::sortCategoriesArray($result_arr);
+            $mainArr = self::sortCategoriesArray($result_arr);
         }
         
-       return $result_arr;
+        $elseArr = self::addElseItemToMenu($mainArr);
+        
+        $public_arr['whithout_else_arr'] = $mainArr;
+        $public_arr['else_arr'] =$elseArr;
+        
+        return $public_arr;
     }
+    
+    public static function addElseItemToMenu($arr){
+        
+        $countItem = 3;
+        $elseArr = [];
+        
+        if(count($arr) > $countItem){
+            
+            for($i = 0; $i < count($arr); $i++){
+                
+                if($i > ($countItem - 1)){
+                    
+                    $elseArr['else'][] = $arr[$i];
+                    continue;
+                } 
+                $elseArr[$i] = $arr[$i];
+            }
+            return $elseArr;
+        }
+        return;
+    }
+    
     //сортировка массива по ключу 'position'
     public static function  sortCategoriesArray($arr)
     {
@@ -112,9 +140,9 @@ class Categories extends \yii\db\ActiveRecord
                $arr[$key]['children'] = $value['children'];
            }
         }
-        
         return $arr;
     }
+    
     //метод сравнения
     public static function  runRange($a, $b)
     {
@@ -126,7 +154,14 @@ class Categories extends \yii\db\ActiveRecord
     
     //получение id категории по ее полю 'name'
     public function getIdByName($name){
-        $cat = Categories::find()->where(['name' => $name])->one();
+        $cat = Categories::find()->andWhere(['name' => $name])->andWhere(['status' => 1])->one();
+        
+        return $cat->id;
+    }
+    
+    //получение id категории по ее полю 'uri' => 'url'
+    public function getIdByUrl($url){
+        $cat = Categories::find()->andWhere(['url' => $url])->andWhere(['status' => 1])->one();
         
         return $cat->id;
     }

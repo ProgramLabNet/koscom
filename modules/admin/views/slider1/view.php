@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Slider1 */
 
-$this->title = $model->image;
+$this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Слайдер1', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

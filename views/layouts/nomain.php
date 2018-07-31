@@ -29,10 +29,14 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <div class="container">   
+    <div class="container"> 
+        
+        <!--start Навигация-->
         <nav>
             <div class="nav-header">
-                <a class="nav-header-link" href="/">РКС</a>
+                <div class="mini-logo">
+                    <a class="nav-header-link" href="/"><img src="/public/logo_KosKom.png" /></a>
+                </div>
                 <button type="button" class="nav-header-button">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -53,15 +57,54 @@ AppAsset::register($this);
             </div>
             <!--end Панель для админа-->
             <!--start Панель для пользователя-->
-            <?php if(Categories::getCategoriesForNavMenu()): ?>    
+            <?php if(Categories::getCategoriesForNavMenu()['else_arr']): ?>    
                 <div class="for-users">
+                    <div class="logo">
+                        <a class="nav-header-link" href="/"><img src="/public/logo_KosKom.png" /></a>
+                    </div>
+                    <!--start главного меню-->
                     <ul class="main-menu">
-                        <?php foreach(Categories::getCategoriesForNavMenu() as $key=>$nav):?>
+                        <?php foreach(Categories::getCategoriesForNavMenu()['else_arr'] as $key=>$nav):?>
+                            <!--start кнопка ещё-->
+                            <?php if($key === 'else'): ?>
+                                <li class="else"><a href="#">ЕЩЁ&nbsp;<span class="glyphicon glyphicon-chevron-down"></span></a>
+                                    <ul class="else-menu">
+                                        <?php foreach($nav as $else): ?>
+                                            <li><a href="<?= Url::toRoute([$else['url']])?>"><?= $else['name']?></a>
+                                                <?php if($else['children']): ?>
+                                                    <ul class="sub-menu">
+                                                        <?php foreach($else['children'] as $k_sub_nuv_else => $v_sub_nav_else): ?>
+                                                            <li><a href="<?= $v_sub_nav_else['url']; ?>"><?= $v_sub_nav_else['name']; ?></a></li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php endif; ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </li>
+                            <?php else: ?>
+                            <!--end кнопка ещё-->
+                                <li><a href="<?= Url::toRoute([$nav['url']])?>"><?= $nav['name']?></a>
+                                    <?php if($nav['children']): ?>
+                                        <ul class="sub-menu">
+                                            <?php foreach($nav['children'] as $k_sub_nuv => $v_sub_nav): ?>
+                                                <li><a href="<?= $v_sub_nav['url']; ?>"><?= $v_sub_nav['name']; ?></a></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                    <!--end главного меню-->
+                    <ul class="mini-menu">
+                        <?php foreach(Categories::getCategoriesForNavMenu()['whithout_else_arr'] as $key=>$nav):?>
+                        
                             <li><a href="<?= Url::toRoute([$nav['url']])?>"><?= $nav['name']?></a>
                                 <?php if($nav['children']): ?>
                                     <ul class="sub-menu">
                                         <?php foreach($nav['children'] as $k_sub_nuv => $v_sub_nav): ?>
-                                            <li><a href="#"><?= $v_sub_nav['name']; ?></a></li>
+                                            <li><a href="<?= $v_sub_nav['url']; ?>"><?= $v_sub_nav['name']; ?></a></li>
                                         <?php endforeach; ?>
                                     </ul>
                                 <?php endif; ?>
@@ -74,6 +117,7 @@ AppAsset::register($this);
             <?php endif; ?>
             <!--end Панель для пользователя-->
         </nav>
+        <!--end Навигация-->
         
         <div class="wrap-content">
             <div id="content_in_content">
@@ -83,11 +127,18 @@ AppAsset::register($this);
     </div>
 </div>
 
+<!--start footer-->
 <div class="container">
     <footer class="footer">
-        <p class="pull-left">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
+            <div class="footer-wrap">
+                <div class="logo-footer">
+                    <a href="/"><img src="/public/logo_KosKom.png" /></a>
+                </div>
+                <p class="footer-title">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
+            </div>
     </footer>
 </div>
+<!--end footer-->
 
 <?php $this->endBody() ?>
 </body>
