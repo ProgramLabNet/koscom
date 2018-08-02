@@ -1,3 +1,4 @@
+//скрыть/раскрыть меню навигации на маленких устройствах
 ;(function(){
 	$(document).ready(function(){
 		//раскрыть и скрыть меню навигации на маленьких размерах экрана
@@ -12,5 +13,18 @@
 			}
 		});
 		
+	});
+})();
+
+//предотвратить клик на родительских элементах
+;(function(){
+	$(document).ready(function(){
+            $(".main-parent").click(function(e){
+                var next = $(this).next()[0];
+                var next_class = $(next).attr('class');
+                if(next_class == "sub-menu"){
+                    e.preventDefault();
+                }
+            });
 	});
 })();

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Articles;
 use app\models\Categories;
 
@@ -13,10 +14,8 @@ class NewsController extends \yii\web\Controller
     {
         $this->layout = 'news';
         
-        $uri = $_SERVER['REQUEST_URI'];
-        
         $categories = new Categories();
-        $category_id = $categories->getIdByUrl($uri);
+        $category_id = $categories->getIdByUrl(Yii::$app->request->url);
         
         $articles = new Articles();
         $news = $articles->getNews($category_id);
@@ -52,23 +51,29 @@ class NewsController extends \yii\web\Controller
         die;
     }
     
-    public function actionArticle($id)
+    public function actionArticle($alias)
     {
         $this->layout = 'article';
+        
+        $alias = trim(stripslashes(htmlspecialchars($alias)));
         
         $articles = new Articles();
         $categories = new Categories();
         
-        $article = $articles->getOneArticles($id);
+        $article = $articles->getArticleByAlias($alias);
         
         if($article->category_id){
-            $lastArticles = $articles->getLastArticles($article->id, $article->category_id);
+            $lastArticles = $articles->getLastArticles($article->category_id, $article->id);
             
             $parentCategories = $categories->getSubCategories($article->category_id);
             $brothersCategories = $categories->getBrothersCategories($parentCategories->parent_id);
+            $view = '/handler/one_article';
+        }
+        else{
+            $view = '/static/404';
         }
         
-        return $this->render('one_article', [
+        return $this->render($view, [
             'article' => $article,
             'lastArticles' => $lastArticles,
             'brothersCategories' => $brothersCategories

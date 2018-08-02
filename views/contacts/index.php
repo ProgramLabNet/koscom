@@ -1,4 +1,5 @@
-<?php
-/* @var $this yii\web\View */
-?>
-<h1>contacts/index</h1>
+<div id="content_in_content">
+    <div class="contacts">
+        <p>Контакты:</p>
+    </div>
+</div>

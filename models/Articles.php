@@ -37,11 +37,11 @@ class Articles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'body', 'status', 'category_id', 'created_at'], 'required'],
+            [['title', 'body', 'status', 'category_id', 'created_at', 'alias'], 'required'],
             [['lead', 'body'], 'string'],
             [['status', 'category_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['title', 'main_image'], 'string', 'max' => 255],
+            [['title', 'main_image', 'alias'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['upload_image'], 'file', 'extensions' => 'png, jpg'],
             [['upload_preview_image'], 'file', 'extensions' => 'png, jpg'],
@@ -65,7 +65,8 @@ class Articles extends \yii\db\ActiveRecord
             'created_at' => 'Дата создания',
             'updated_at' => 'Дата редактирования',
             'upload_image' => 'Главное изображение',
-            'upload_preview_image' => 'Превью изображение'
+            'upload_preview_image' => 'Превью изображение',
+            'alias' => 'Псевдоним заголовка'
         ];
     }
 
@@ -116,7 +117,7 @@ class Articles extends \yii\db\ActiveRecord
         return $article;
     }
     
-    public function getLastArticles($id, $category_id){
+    public function getLastArticles($category_id, $id=0){
         
         return self::find()->andWhere(['category_id' => $category_id])->andWhere(['status' => 1])->andWhere(['!=', 'id', $id])->orderBy(['created_at' => SORT_DESC])->limit(5)->all();
     }
@@ -125,4 +126,10 @@ class Articles extends \yii\db\ActiveRecord
         
         return self::find()->andWhere(['category_id' => $category_id])->andWhere(['status' => 1])->one();
     }
+
+    public function getArticleByAlias($alias) {
+        
+        return self::find()->andWhere(['alias' => $alias])->andWhere(['status' => 1])->one(); 
+    }
+
 }

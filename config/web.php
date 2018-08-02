@@ -51,6 +51,14 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'site' => 'site/index',
+                'contacts' => 'contacts/index',
+                'login/logout' => 'login/logout',
+                'news' => 'news/index',
+                'news/ajax' => 'news/ajax',
+                'news/article/<alias:[\w-]+>' => 'news/article',
+                '<controller:[\w-]+>' => 'handler/index',
+                '<controller:[\w-]+>/<action:[\w-]+>' => 'handler/index'
             ],
         ],
     ],
@@ -60,23 +68,14 @@ $config = [
         ],
     ],
     'controllerMap' => [
-
         'elfinder' => [
-
             'class' => 'mihaildev\elfinder\PathController',
-
             'access' => ['@'],
-
             'root' => [
-
                 'path' => 'uploads/global',
-
                 'name' => 'Global'
-
             ],
-
         ]
-
     ],
     'params' => $params,
 ];

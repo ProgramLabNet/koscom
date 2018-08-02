@@ -135,11 +135,12 @@ div.news-image a:hover div.img-hover{
 .article-main{
 }
 
-.article-bar{
-}
-
 .article-wrap{
     margin: 15px 0 15px 0;
+}
+
+.article-image{
+    margin-bottom: 20px;
 }
 
 .article-image img{
@@ -147,7 +148,6 @@ div.news-image a:hover div.img-hover{
 }
 
 .article-lead{
-    margin-top: 20px;
     width: 100%;
     font-family: "Elektra Light Pro Bold", sans-serif;
     font-size: 15px;
@@ -232,3 +232,13 @@ div.news-image a:hover div.img-hover{
     opacity: 0.4;
 }
 
+.contacts{
+    margin: 15px 0;
+}
+
+/*медиа запросы*/
+@media (max-width: 992px){
+    .article-body{
+        margin-bottom: 20px;
+    }
+}
