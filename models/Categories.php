@@ -32,7 +32,7 @@ class Categories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'parent_id'], 'required'],
+            [['name', 'parent_id','url'], 'required'],
             [['parent_id', 'level', 'status', 'position'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'url'], 'string', 'max' => 255],
@@ -43,7 +43,7 @@ class Categories extends \yii\db\ActiveRecord
     {
         $parent_id = [0 => 'Корневая категория'];
         
-        if($categories = self::find()->where(['parent_id' => 0])->all()){
+        if($categories = self::find()->where(['status' => 1])->all()){
             $parent_id_db = ArrayHelper::map($categories,'id','name');
             
             foreach($parent_id_db as $key => $item){
@@ -76,22 +76,25 @@ class Categories extends \yii\db\ActiveRecord
     }
     
     //формирование главного навигационного меню
-    public static function getCategoriesForNavMenu()
+    public static function getCategoriesForNavMenu($parent_id = 0)
     {
         $result_arr = [];
         
         $query_arr = self::find()->andWhere(['status' => 1])->andWhere(['>', 'position', 0])->asArray()->all();
          
         if($query_arr){
-            foreach ($query_arr as $key=>$value){
-                if($value['parent_id'] == 0){
+            foreach ($query_arr as $key => $value){
+                if($value['parent_id'] == $parent_id){
                     $value['name'] = mb_strtoupper($value['name']);
-                    $result_arr[$value['id']] = $value;
+                    $result_arr[$value['id']] = $value; 
                 }
-                if(!empty($result_arr)){
-                    foreach($result_arr as $key_res=>$value_res){
-                        if($key_res == $value['parent_id']){
-                            $result_arr[$value['parent_id']]['children'][$value['id']] = $value;
+            }
+            
+            if($result_arr){
+                foreach($result_arr as $k_first => $v_first){
+                    foreach($query_arr as $key_query => $v_query){
+                        if($k_first == $v_query['parent_id']){
+                            $result_arr[$k_first]['children'][$v_query['id']] = $v_query;
                         }
                     }
                 }
@@ -164,6 +167,13 @@ class Categories extends \yii\db\ActiveRecord
         $cat = Categories::find()->andWhere(['url' => $url])->andWhere(['status' => 1])->one();
         
         return $cat->id;
+    }
+    //получить url категории по ее id
+    public static function getUrlById($id){
+        
+        $cat = self::find()->andWhere(['id' => $id])->andWhere(['status' => 1])->one();
+        
+        return $cat->url;
     }
     
     public function getSubCategories($category_id){

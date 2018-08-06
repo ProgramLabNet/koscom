@@ -70,7 +70,7 @@ class ArticlesController extends Controller
         $model = new Articles();
         
         $categories = new Categories();
-        $arr_categories = $categories->getWhithOutChildrenId();
+        $arr_categories = $categories->getParentId();
         
         $this->LoadAndSaveModel($model);
 

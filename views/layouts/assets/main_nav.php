@@ -1,5 +1,6 @@
 <?php
 use app\models\Categories;
+use app\models\Articles;
 use yii\helpers\Url;
 ?>
 
@@ -40,11 +41,11 @@ use yii\helpers\Url;
                     <li class="else"><a class="main-parent" href="">ЕЩЁ&nbsp;<span class="glyphicon glyphicon-chevron-down"></span></a>
                         <ul class="else-menu">
                             <?php foreach($nav as $else): ?>
-                                <li><a class="main-parent" href="<?= Url::toRoute([$else['url']])?>"><?= $else['name']?></a>
+                            <li><a class="main-parent" href="<?= Url::toRoute([$else['url']]) ?>"><?= $else['name']?></a>
                                     <?php if($else['children']): ?>
                                         <ul class="sub-menu">
                                             <?php foreach($else['children'] as $k_sub_nuv_else => $v_sub_nav_else): ?>
-                                                <li><a href="<?= Url::toRoute([$v_sub_nav_else['url']]); ?>"><?= $v_sub_nav_else['name']; ?></a></li>
+                                                <li><a href="<?= Url::toRoute([$v_sub_nav_else['url']]) ?>"><?= $v_sub_nav_else['name'] ?></a></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     <?php endif; ?>
@@ -54,11 +55,11 @@ use yii\helpers\Url;
                     </li>
                 <?php else: ?>
                 <!--end кнопка ещё-->
-                    <li><a class="main-parent" href="<?= Url::toRoute([$nav['url']])?>"><?= $nav['name']?></a>
+                    <li><a class="main-parent" href="<?= Url::toRoute([$nav['url']]) ?>"><?= $nav['name'] ?></a>
                         <?php if($nav['children']): ?>
                             <ul class="sub-menu">
                                 <?php foreach($nav['children'] as $k_sub_nuv => $v_sub_nav): ?>
-                                    <li><a href="<?= Url::toRoute([$v_sub_nav['url']]); ?>"><?= $v_sub_nav['name']; ?></a></li>
+                                    <li><a href="<?= Url::toRoute([$v_sub_nav['url']]) ?>"><?= $v_sub_nav['name'] ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         <?php endif; ?>

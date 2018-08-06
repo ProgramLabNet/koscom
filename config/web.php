@@ -52,13 +52,21 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'site' => 'site/index',
-                'contacts' => 'contacts/index',
+                'login' => 'login/index',
                 'login/logout' => 'login/logout',
+                'contacts' => 'contacts/index',
                 'news' => 'news/index',
                 'news/ajax' => 'news/ajax',
                 'news/article/<alias:[\w-]+>' => 'news/article',
-                '<controller:[\w-]+>' => 'handler/index',
-                '<controller:[\w-]+>/<action:[\w-]+>' => 'handler/index'
+                'admin/<controller:[\w-]+>/<action:[\w-]+>'  =>  'admin/<controller>/<action>',
+                'admin/<controller:[\w-]+>/<action:[\w-]+>/<id:[\w-]+>' => 'admin/<controller>/<action>',         
+                
+                '<controller>' => 'handler/index',
+                '<controller>/<action>' => 'handler/index',
+                '<controller>/<action>/<alias:[\w-]+>' => 'handler/index',
+                
+                //'<controller:[\w-]+>/<alias:[\w-]+>' => '<controller>',
+                '<controller:[\w-]+>/<action:[\w-]+>/<alias:[\w-]+>' => '<controller>/<action>',   
             ],
         ],
     ],

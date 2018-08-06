@@ -64,7 +64,7 @@ AppAsset::register($this);
 </div>
 
 <!--start footer-->
-<div class="container">
+<div class="container cnt-footer">
     <footer class="footer">
             <div class="footer-wrap">
                 <div class="logo-footer">

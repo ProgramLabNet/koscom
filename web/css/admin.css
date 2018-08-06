@@ -30,6 +30,10 @@
     right: 15px;
 }
 
+.admin-button:focus{
+    outline: none;
+}
+
 .admin-button:hover{
     background-color: #777;
 }

@@ -28,4 +28,11 @@
             <a href="/admin/slider1/index"><button type="submit" class="admin-button">Перейти</button></a>
         </div>
     </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="admin-card">
+            <h3>Управление материалами на главной странице</h3>
+            <p>Добавление и удаление изображений на главной страницы.</p>
+            <a href="/admin/mainpage/index"><button type="submit" class="admin-button">Перейти</button></a>
+        </div>
+    </div>
 </div>

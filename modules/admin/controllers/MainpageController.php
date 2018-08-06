@@ -1,16 +1,18 @@
 <?php
+
 namespace app\modules\admin\controllers;
+
 use Yii;
-use app\models\Categories;
-use app\models\CategoriesSearch;
+use app\models\Mainpage;
+use app\models\MainpageSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\data\Pagination;
+
 /**
- * CategoriesController implements the CRUD actions for Categories model.
+ * MainpageController implements the CRUD actions for Mainpage model.
  */
-class CategoriesController extends Controller
+class MainpageController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -26,21 +28,24 @@ class CategoriesController extends Controller
             ],
         ];
     }
+
     /**
-     * Lists all Categories models.
+     * Lists all Mainpage models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CategoriesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);;
+        $searchModel = new MainpageSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
+
     /**
-     * Displays a single Categories model.
+     * Displays a single Mainpage model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -51,29 +56,27 @@ class CategoriesController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+
     /**
-     * Creates a new Categories model.
+     * Creates a new Mainpage model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Categories();
-        
-        $parent_id = $model->getParentId();
-        
-        if($model->isNewRecord){
-            $model->created_at = date('Y-m-d H:i:s');
-        }
+        $model = new Mainpage();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
+
         return $this->render('create', [
-            'model' => $model, 'parent_id' => $parent_id
+            'model' => $model,
         ]);
     }
+
     /**
-     * Updates an existing Categories model.
+     * Updates an existing Mainpage model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -82,21 +85,18 @@ class CategoriesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        
-        if(!$model->isNewRecord){
-            $model->updated_at = date('Y-m-d H:i:s');
-        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        
-        $parent_id = $model->getParentId();
+
         return $this->render('update', [
-            'model' => $model, 'parent_id' => $parent_id
+            'model' => $model,
         ]);
     }
+
     /**
-     * Deletes an existing Categories model.
+     * Deletes an existing Mainpage model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -105,20 +105,23 @@ class CategoriesController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+
         return $this->redirect(['index']);
     }
+
     /**
-     * Finds the Categories model based on its primary key value.
+     * Finds the Mainpage model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Categories the loaded model
+     * @return Mainpage the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Categories::findOne($id)) !== null) {
+        if (($model = Mainpage::findOne($id)) !== null) {
             return $model;
         }
+
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

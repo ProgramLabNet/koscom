@@ -4,17 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Slider1 */
+/* @var $model app\models\Mainpage */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="slider1-form">
+<div class="mainpage-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
-    
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'article_id')->textInput() ?>
 
     <?= $form->field($model, 'status')->dropDownList([1=>'Активный', 0=>'Неактивный']) ?>
 

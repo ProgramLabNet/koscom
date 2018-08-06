@@ -1,6 +1,11 @@
 body{
+    height: 100%;
+    padding: 0;
+    margin: 0;
     font-family: "Elektra Light Pro", sans-serif !important;
     color: rgb(142,142,142) !important;
+    background: #ffffff url(../uploads/global/bg.jpg) no-repeat fixed center top;
+    background-size: auto;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -268,6 +273,12 @@ li.else:hover .else-menu{
 
 .carousel-caption a span{
     display: none;
+}
+
+.article-main a{
+    margin: 0;
+    padding: 0;
+    color: rgb(59, 140, 237);
 }
 
 /* media запросы */

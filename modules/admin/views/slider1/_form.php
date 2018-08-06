@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
     
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->dropDownList([1=>1, 0=>0]) ?>
+    <?= $form->field($model, 'status')->dropDownList([1=>'Активный', 0=>'Неактивный']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

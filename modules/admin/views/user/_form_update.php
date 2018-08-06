@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true, 'disabled' => true]) ?>
 
-    <?= $form->field($model, 'isAdmin')->dropDownList([1=>1, 0=>0]) ?>
+    <?= $form->field($model, 'isAdmin')->dropDownList([1=>'Включить', 0=>'Выключить']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

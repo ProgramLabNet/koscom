@@ -9,10 +9,10 @@ use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
+use app\assets\NomainAsset;
 use app\models\Categories;
 
-AppAsset::register($this);
+NomainAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -46,7 +46,7 @@ AppAsset::register($this);
 </div>
 
 <!--start footer-->
-<div class="container">
+<div class="container cnt-footer">
     <footer class="footer">
             <div class="footer-wrap">
                 <div class="logo-footer">

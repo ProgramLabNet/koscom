@@ -81,9 +81,7 @@ class Articles extends \yii\db\ActiveRecord
     
     public function getNews($param, $offset = 0){
         
-       $news = self::find()->andWhere(['category_id' => $param])->andWhere(['status' => 1])->orderBy(['created_at' => SORT_DESC])->offset($offset)->limit(12)->all();
-     
-       return $news;
+       return self::find()->andWhere(['category_id' => $param])->andWhere(['status' => 1])->orderBy(['created_at' => SORT_DESC])->offset($offset)->limit(12)->all();
     }
     
     public static function getMainImage($image){
@@ -129,7 +127,26 @@ class Articles extends \yii\db\ActiveRecord
 
     public function getArticleByAlias($alias) {
         
-        return self::find()->andWhere(['alias' => $alias])->andWhere(['status' => 1])->one(); 
+        return self::find()->where(['alias' => $alias, 'status' => 1])->one(); 
+    }
+    
+    public function getSelectData($arr){
+        
+        return self::find()->andWhere(['in', 'id', $arr])->andWhere(['status' => 1])->all();
+    }
+    
+    public function getArticlesByCategoryId($category_id, $id=0){
+        
+        return self::find()->andWhere(['category_id' => $category_id, 'status' => 1])->andWhere(['!=', 'id', $id])->all();
     }
 
+    public function getOneArticleByCategoryIdAndAlias($category_id){
+        
+        return self::find()->where(['category_id' => $category_id, 'status' => 1, 'alias' => '/'])->one();
+    }
+    
+    public function getCategoryArticlesByCategoryIdAdnAlias($category_id){
+        
+        return self::find()->andWhere(['category_id' => $category_id, 'status' => 1])->andWhere(['!=', 'alias', '/'])->all();
+    }
 }

@@ -10,11 +10,16 @@ body {
 }
 
 .wrap-content{
-    margin-bottom: 70px;
+    padding-bottom: 70px;
+    background-color: #ffffff;
+}
+
+.cnt-footer{
+    
 }
 
 .footer{
-    /*height: 60px;*/
+    height: 60px;
     background-color: rgb(243,243,243);
     border-top: 1px solid #ddd;
     padding-top: 20px;
@@ -148,5 +153,14 @@ a.desc:after {
     .footer-title{
         padding-left: 0;
         padding-top: 30px !important;
+    }
+    .footer{
+        height: 100%;
+    }
+}
+
+@media(max-width:991px) {
+    .footer{
+        height: 100%;
     }
 }

@@ -32,7 +32,8 @@
                 <!--start left block-->
                 <div class="col-lg-4 col-lg-pull-8 col-md-4 col-md-pull-8 col-sm-12 col-xs-12">
                     <?= $this->render('/layouts/assets/left_article_bar.php', [
-                        'lastArticles' => $lastArticles
+                        'lastArticles' => $lastArticles,
+                        'category_article' => $category_article
                     ]) ?>
                 </div>
                 <!--end left block-->

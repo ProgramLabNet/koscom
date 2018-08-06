@@ -7,6 +7,8 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
+use app\models\Articles;
+use app\models\Mainpage;
 
 class SiteController extends Controller
 {
@@ -31,8 +33,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {   
+        $mainpage = new Mainpage();
+        $articles = new Articles();
         
-        return $this->render('index');
+        if($arr = $mainpage->getDataForMainPage()){
+            $articles_arr = $articles->getSelectData($arr);
+        }
+        
+        return $this->render('index', [
+            'articles_arr' => $articles_arr
+        ]);
     }
     
     public function actionError(){

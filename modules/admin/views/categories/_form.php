@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'parent_id')->dropDownList($parent_id) ?>
 
-    <?= $form->field($model, 'level')->dropDownList([1 =>1, 2=>2]) ?>
+    <?= $form->field($model, 'level')->dropDownList([1 =>1, 2=>2, 3=>3, 4=>4]) ?>
 
     <?= $form->field($model, 'status')->dropDownList([1=>'Активный', 0=>'Не активный']) ?>
     
