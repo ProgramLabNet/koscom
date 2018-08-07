@@ -30,34 +30,34 @@ NomainAsset::register($this);
 
 <div class="wrap">
     <div class="container"> 
-        
-        <!--start Навигация-->
-        <nav>
-            <?php require 'assets/main_nav.php'; ?>
-        </nav>
-        <!--end Навигация-->
-        
-        <div class="wrap-content">
-            <div id="content_in_content">
-                <?= $content ?>
+        <div class="wrap-background">
+            <!--start Навигация-->
+            <nav>
+                <?php require 'assets/main_nav.php'; ?>
+            </nav>
+            <!--end Навигация-->
+
+            <div class="wrap-content">
+                <div id="content_in_content">
+                    <?= $content ?>
+                </div>
             </div>
+            
         </div>
     </div>
-</div>
-
-<!--start footer-->
-<div class="container cnt-footer">
-    <footer class="footer">
-            <div class="footer-wrap">
-                <div class="logo-footer">
-                    <a href="/"><img src="/public/logo_KosKom.png" /></a>
+    <!--start footer-->
+    <div class="container cnt-footer">
+        <footer class="footer">
+                <div class="footer-wrap">
+                    <div class="logo-footer">
+                        <a href="/"><img src="/public/logo_KosKom.png" /></a>
+                    </div>
+                    <p class="footer-title">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
                 </div>
-                <p class="footer-title">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
-            </div>
-    </footer>
+        </footer>
+    </div>
+    <!--end footer-->
 </div>
-<!--end footer-->
-
 <?php $this->endBody() ?>
 </body>
 </html>

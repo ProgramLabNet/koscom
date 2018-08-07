@@ -17,6 +17,12 @@ h1, h2, h3, h4, h5, h6{
     outline-offset: 0;
 }
 
+.wrap-background{
+    position: relative;
+    background-color: #fff;
+    min-height: 100%;
+}
+
 /*start nav*/
 
 nav{
@@ -296,6 +302,14 @@ li.else:hover .else-menu{
 }
 
 @media (max-width: 992px){
+    .wrap-background{
+        height: 100%;
+    }
+    
+    .cnt-footer{
+        display: none;
+    }
+    
     .carousel-caption{
         padding-bottom: 40px;
     }
