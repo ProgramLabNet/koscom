@@ -17,6 +17,21 @@ h1, h2, h3, h4, h5, h6{
     outline-offset: 0;
 }
 
+.breadcrumb{
+    margin-top: 20px;
+    margin-bottom: 0;
+    background-color: rgb(230,230,230);
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.breadcrumb a{
+    color: #777;
+}
+
+.breadcrumb a:hover{
+    color: rgb(0,166,228);
+}
 
 .wrap-content{
    min-height: 100%;

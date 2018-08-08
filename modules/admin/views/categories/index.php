@@ -9,6 +9,7 @@ use yii\grid\GridView;
 
 $this->title = 'Категории';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="categories-index">
 

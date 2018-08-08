@@ -149,4 +149,25 @@ class Articles extends \yii\db\ActiveRecord
         
         return self::find()->andWhere(['category_id' => $category_id, 'status' => 1])->andWhere(['!=', 'alias', '/'])->all();
     }
+    //обрезка и составление строки для breadcrumbs
+     public static function cutArticleTitle($title)
+    {
+        if($title){
+            $arr_title = explode(' ', $title, 6);
+            
+            if(count($arr_title) > 5){
+                array_pop($arr_title);
+            }
+            
+            for($i=0; $i<count($arr_title); $i++){
+                if($i == (count($arr_title)-1)){
+                    $str .= $arr_title[$i] . '...';
+                }
+                else{
+                    $str .= $arr_title[$i] . ' ';
+                }
+            }
+            return $str;
+        }
+    }
 }

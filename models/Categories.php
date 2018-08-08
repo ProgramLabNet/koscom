@@ -182,7 +182,12 @@ class Categories extends \yii\db\ActiveRecord
     }
     
     public function getBrothersCategories($id){
-        return self::find()->andWhere(['parent_id' => $id])->andWhere(['!=', 'parent_id', 0])->all();
+        return self::find()->andWhere(['parent_id' => $id, 'status' => 1])->andWhere(['!=', 'parent_id', 0])->all();
+    }
+    
+    public function getCategoriesByUrl($url)
+    {
+        return self::find()->andWhere(['url' => $url, 'status' => 1])->one();
     }
 
     /**

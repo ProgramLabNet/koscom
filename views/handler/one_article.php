@@ -1,10 +1,16 @@
 <?php
     use app\models\Articles;
-    use yii\helpers\Url; 
+    use yii\helpers\Url;
+    use yii\widgets\Breadcrumbs;
 ?>
 <?php if($article): ?>
     <div class="ctegory_panel">
         <span><?= $article->title ?></span>
+        <div class="wrap-breadcrumbs">
+            <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+        </div>
     </div>
 
     <div class="row">

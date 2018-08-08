@@ -17,23 +17,36 @@ class HandlerController extends \yii\web\Controller
         
         $news_category_id = $categories->getIdByName('Новости');
         
+        
+        
+        
+        
         if($news_category_id){
             $lastArticles = $articles->getLastArticles($news_category_id);
         }
         
         if($alias){
             $article = $articles->getArticleByAlias($alias);
+            $name = $article->category->name;
+            $url = $article->category->url;
             $category_article = $articles->getCategoryArticlesByCategoryIdAdnAlias($article->category_id);
+            
         }
         else{
-            $category_id = $categories->getIdByUrl(Yii::$app->request->url);
-            $category_article = $articles->getCategoryArticlesByCategoryIdAdnAlias($category_id);
-            $article = $articles->getOneArticleByCategoryIdAndAlias($category_id);
+            $category = $categories->getCategoriesByUrl(Yii::$app->request->url);
+            $name = $category->name;
+            $url = $category->url;
+            $category_article = $articles->getCategoryArticlesByCategoryIdAdnAlias($category->id);
+            $article = $articles->getOneArticleByCategoryIdAndAlias($category->id);
         }
         
         if($article){
             $this->view->title = $article->title;
-            $view = '/handler/one_category';  
+            $this->view->params['breadcrumbs'] = [
+                ['label' => $name, 'url' => [$url]],
+                ['label' => Articles::cutArticleTitle($article->title)]
+            ];
+            $view = '/handler/one_category';
         }
         else{
             $view = '/static/404';

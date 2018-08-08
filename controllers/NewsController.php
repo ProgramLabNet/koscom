@@ -70,6 +70,11 @@ class NewsController extends \yii\web\Controller
             $parentCategories = $categories->getSubCategories($article->category_id);
             $brothersCategories = $categories->getBrothersCategories($parentCategories->parent_id);
             $view = '/handler/one_article';
+            
+            $this->view->params['breadcrumbs'] = [
+                ['label' => 'Новости', 'url' => ['/news']],
+                ['label' => Articles::cutArticleTitle($article->title)]
+            ];
         }
         else{
             $view = '/static/404';

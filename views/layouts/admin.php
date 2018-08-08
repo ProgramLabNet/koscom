@@ -62,6 +62,7 @@ AdminAsset::register($this);
         <div class="content_in_content_admin">
 
             <?= Breadcrumbs::widget([
+                'homeLink' => ['label' => 'Admin', 'url' => '/admin/default/index'],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
             <?= Alert::widget() ?>
