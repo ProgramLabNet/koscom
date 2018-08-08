@@ -1,4 +1,3 @@
-        
 ;(function(){
         $(document).ready(function(){
             
@@ -10,6 +9,8 @@
                 $('.wrap-background').css({
                     height: wrap_height + 'px'
                 });
+                
+                console.log(wrap_height);
             }
             
             setWrapContentHeight();

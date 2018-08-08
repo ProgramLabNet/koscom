@@ -17,10 +17,20 @@ h1, h2, h3, h4, h5, h6{
     outline-offset: 0;
 }
 
-.wrap-background{
-    position: relative;
-    background-color: #fff;
-    min-height: 100%;
+
+.wrap-content{
+   min-height: 100%;
+   background-color: #ffffff;
+   padding: 0;
+}
+
+.wrap-padding{
+    padding: 0 15px;
+}
+
+.up-footer{
+    margin-top: -60px;
+    padding: 0;
 }
 
 /*start nav*/
@@ -243,7 +253,7 @@ li.else:hover .else-menu{
 }
 
 #content_in_content{
-    padding: 5px 20px 20px 20px;
+    padding: 0 20px 80px 20px;
 }
 
 #main-slider{
@@ -302,14 +312,6 @@ li.else:hover .else-menu{
 }
 
 @media (max-width: 992px){
-    .wrap-background{
-        height: 100%;
-    }
-    
-    .cnt-footer{
-        display: none;
-    }
-    
     .carousel-caption{
         padding-bottom: 40px;
     }
@@ -385,6 +387,7 @@ li.else:hover .else-menu{
 }
 
 @media (max-width: 768px){
+    
     .carousel-caption{
         padding-bottom: 30px;
     }
@@ -403,7 +406,10 @@ li.else:hover .else-menu{
     }
 }
 
+
+
 @media (max-width: 520px){
+  
     .carousel-caption a h2{
         display: none;
     }

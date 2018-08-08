@@ -28,33 +28,30 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">   
-    <div class="container">   
-        
+    <div class="container wrap-content">
         <!--start Навигация-->
         <nav>
             <?php require 'assets/main_nav.php'; ?>
         </nav>
         <!--end Навигация-->
-        
-        <div class="wrap-content">
+
+        <div id="content_in_content">
             <?= $content ?>
         </div>
     </div>
-</div>
-
-<!--start footer-->
-<div class="container">
-    <footer class="footer">
+    
+    <div class="container up-footer">
+        <!--start footer-->
+         <footer class="footer">
             <div class="footer-wrap">
                 <div class="logo-footer">
                     <a href="/"><img src="/public/logo_KosKom.png" /></a>
                 </div>
                 <p class="footer-title">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
             </div>
-    </footer>
-</div>
-<!--end footer-->
+        </footer>
+        <!--end footer-->
+    </div>
 
 <?php $this->endBody() ?>
 </body>

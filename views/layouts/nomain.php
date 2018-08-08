@@ -27,37 +27,32 @@ NomainAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+    
+    <div class="container wrap-content">
+        <!--start Навигация-->
+        <nav>
+            <?php require 'assets/main_nav.php'; ?>
+        </nav>
+        <!--end Навигация-->
 
-<div class="wrap">
-    <div class="container"> 
-        <div class="wrap-background">
-            <!--start Навигация-->
-            <nav>
-                <?php require 'assets/main_nav.php'; ?>
-            </nav>
-            <!--end Навигация-->
-
-            <div class="wrap-content">
-                <div id="content_in_content">
-                    <?= $content ?>
-                </div>
-            </div>
-            
+        <div id="content_in_content">
+            <?= $content ?>
         </div>
     </div>
-    <!--start footer-->
-    <div class="container cnt-footer">
-        <footer class="footer">
-                <div class="footer-wrap">
-                    <div class="logo-footer">
-                        <a href="/"><img src="/public/logo_KosKom.png" /></a>
-                    </div>
-                    <p class="footer-title">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
+    
+    <div class="container up-footer">
+        <!--start footer-->
+         <footer class="footer">
+            <div class="footer-wrap">
+                <div class="logo-footer">
+                    <a href="/"><img src="/public/logo_KosKom.png" /></a>
                 </div>
+                <p class="footer-title">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
+            </div>
         </footer>
+        <!--end footer-->
     </div>
-    <!--end footer-->
-</div>
+
 <?php $this->endBody() ?>
 </body>
 </html>

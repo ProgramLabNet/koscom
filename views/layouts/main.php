@@ -29,19 +29,12 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
    
-<div class="wrap">   
-    <div class="container"> 
-        
+<div class="container wrap-content">
         <!--start Навигация-->
         <nav>
             <?php require 'assets/main_nav.php'; ?>
         </nav>
         <!--end Навигация-->
-        
-        <div class="wrap-content">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
             <?php if($carousel): ?>
             <div id="main-slider">
                 <?= Carousel::widget([
@@ -56,25 +49,22 @@ AppAsset::register($this);
             <?php endif; ?>
             
             <div id="content_in_content">
-                <?= $content ?>
-            </div>
-            
+            <?= $content ?>
         </div>
     </div>
-</div>
-
-<!--start footer-->
-<div class="container cnt-footer">
-    <footer class="footer">
+    
+    <div class="container up-footer">
+        <!--start footer-->
+         <footer class="footer">
             <div class="footer-wrap">
                 <div class="logo-footer">
                     <a href="/"><img src="/public/logo_KosKom.png" /></a>
                 </div>
                 <p class="footer-title">&copy;&nbsp;<?= date('Y') ?>&nbsp;АО «Российские космические системы»</p>
             </div>
-    </footer>
-</div>
-<!--end footer-->
+        </footer>
+        <!--end footer-->
+    </div>
 
 <?php $this->endBody() ?>
 </body>

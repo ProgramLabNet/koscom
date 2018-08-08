@@ -28,7 +28,7 @@ class NomainAsset extends AssetBundle
         'public/css/electrolightprobold.css'
     ];
     public $js = [
-        'js/height_window_resize.js',
+        //'js/height_window_resize.js',
         'js/nav.js'
     ];
     public $depends = [
