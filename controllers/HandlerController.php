@@ -31,9 +31,8 @@ class HandlerController extends \yii\web\Controller
             $article = $articles->getOneArticleByCategoryIdAndAlias($category_id);
         }
         
-        
-        
         if($article){
+            $this->view->title = $article->title;
             $view = '/handler/one_category';  
         }
         else{

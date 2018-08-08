@@ -173,7 +173,7 @@ div.news-image a:hover div.img-hover{
     display: inline-block;
     width: 100%;
     background-color: rgb(230,230,230);
-    color: rgb(30,24,70);
+    color: #777;
 }
 
 .article-last-news>div{

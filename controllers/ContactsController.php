@@ -8,6 +8,7 @@ class ContactsController extends \yii\web\Controller
     
     public function actionIndex()
     {
+        $this->view->title = 'Контакты';
         return $this->render('index');
     }
 

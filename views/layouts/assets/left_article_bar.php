@@ -21,11 +21,11 @@
     <?php endif; ?>
     <?php if($lastArticles): ?>
         <div class="article-last-news">
-            <span class="article-bar-title">Последние новости</span>
+            <span class="article-bar-title"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Последние новости</span>
             <?php foreach($lastArticles as $lastArticle): ?>
                 <div>
                     <div>
-                        <span><a href="<?= Url::toRoute(['news/article', 'alias' => (($lastArticle->alias ) ? $lastArticle->alias : null) ]) ?>"><?= $lastArticle->title ?></a></span>
+                        <span><a href="<?= Url::toRoute(['news/article', 'alias' => (($lastArticle->alias ) ? $lastArticle->alias : null) ]) ?>"><span class="glyphicon glyphicon-ok"></span>&nbsp;<?= $lastArticle->title ?></a></span>
                     </div>
                     <div>
                         <span><?= Articles::getDate($lastArticle->created_at) ?></span>

@@ -20,6 +20,8 @@ class NewsController extends \yii\web\Controller
         $articles = new Articles();
         $news = $articles->getNews($category_id);
         
+        $this->view->title = 'Новости';
+        
         return $this->render('index',[
             'news' => $news
         ]);
@@ -72,6 +74,8 @@ class NewsController extends \yii\web\Controller
         else{
             $view = '/static/404';
         }
+        
+        $this->view->title = $article->title;
         
         return $this->render($view, [
             'article' => $article,

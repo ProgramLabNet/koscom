@@ -29,7 +29,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
    
-<div class="container wrap-content">
+    <div class="container wrap-content">
         <!--start Навигация-->
         <nav>
             <?php require 'assets/main_nav.php'; ?>

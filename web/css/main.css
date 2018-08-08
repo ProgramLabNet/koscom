@@ -166,8 +166,8 @@ ul.sub-menu li{
 .else-menu{
     list-style: none;
     position: absolute;
-    top:100%;
-    right:0;
+    top: 100%;
+    right: 0;
     padding: 0;
     background-color: #fff;
     opacity: 0;
