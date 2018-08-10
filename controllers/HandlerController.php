@@ -17,10 +17,6 @@ class HandlerController extends \yii\web\Controller
         
         $news_category_id = $categories->getIdByName('Новости');
         
-        
-        
-        
-        
         if($news_category_id){
             $lastArticles = $articles->getLastArticles($news_category_id);
         }

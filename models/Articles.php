@@ -170,4 +170,25 @@ class Articles extends \yii\db\ActiveRecord
             return $str;
         }
     }
+    //запрос для поиска
+    public static function getSearchArticles($query, $offset)
+    {
+        return self::find()->where(['status' => 1])->andWhere(['like', 'body', $query])->orWhere(['like', 'lead', $query])->orderBy(['created_at' => SORT_DESC])->offset($offset)->limit(9)->all();
+        
+    }
+    
+    public static function getSearchArticlesCount($query)
+    {
+        return self::find()->where(['status' => 1])->andWhere(['like', 'body', $query])->orWhere(['like', 'lead', $query])->count();
+    }
+    
+    public static function cutArticleLeadOrBody($data)
+    {
+        if($data){
+            $data = substr($data, 0, 350);
+            
+            
+            return ($data.'...');
+        }
+    }
 }

@@ -236,6 +236,95 @@ div.news-image a:hover div.img-hover{
     margin: 15px 0;
 }
 
+.search-back{
+    margin: 7px 0;
+    background-color: rgb(243,243,243);
+    
+}
+
+.search-content{
+    padding: 15px;
+}
+
+.search-title{
+    margin-bottom: 15px;
+}
+
+.search-title a{
+    font-size: 16px;
+    color: #3a3a3a;
+}
+.search-image{
+    margin-bottom: 15px;
+}
+
+.search-image img{
+    width: 100%;
+}
+
+.search-cut-text{
+    margin-bottom: 15px;  
+}
+
+.search-more a{
+    font-size: 16px;
+    color: #3a3a3a;
+    font-family: "Elektra Light Pro Bold", sans-serif;
+}
+
+.search-more a:hover, .search-title a:hover{
+    color: rgb(0,166,228);
+}
+
+.search-hover-wrap{
+    position: relative;
+}
+
+.search-hover{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgb(0, 166, 228);
+    opacity: 0;
+}
+
+.search-image a:hover .search-hover{
+    opacity: 0.4;
+}
+
+.search-pager ul{
+    padding-left: 0;
+    margin: 20px 0;
+    text-align: center;
+    list-style: none;
+}
+
+.search-pager ul li{
+    display: inline-block;
+}
+
+.search-pager ul li a{
+    padding: 10px;
+    border: 1px solid rgb(211,211,211);
+    border-radius: 4px;
+    color: #3a3a3a;
+}
+
+.search-pager ul li a:hover{
+    background-color: rgb(211,211,211);
+    color: #3a3a3a;
+}
+
+.pager-activ{
+    background-color: rgb(211,211,211);
+    color: #3a3a3a;
+}
+
+.searc-view{
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
 /*медиа запросы*/
 @media (max-width: 992px){
     .article-body{

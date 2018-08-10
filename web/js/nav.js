@@ -28,3 +28,12 @@
             });
 	});
 })();
+
+//раскрытие меню поиска
+;(function(){
+	$(document).ready(function(){
+		$('.for-admin ul li span').click(function(){
+			$('.for-admin ul#search').slideToggle(300);
+		});
+        });
+})();

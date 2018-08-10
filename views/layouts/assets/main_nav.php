@@ -2,6 +2,10 @@
 use app\models\Categories;
 use app\models\Articles;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
+use app\models\SearchForm;
+
+$model_searh = new SearchForm();
 ?>
 
 <div class="nav-header">
@@ -19,10 +23,26 @@ use yii\helpers\Url;
     <ul>
         <?php if(Yii::$app->user->isGuest): ?>
             <li><a href="<?= Url::toRoute(['/login']); ?>">ВОЙТИ</a></li>
+            <li><span class="glyphicon glyphicon-search "></span><span class="search-sp">ПОИСК</span></li>
+                <ul id="search">
+                    <li>
+                        <?php $form = ActiveForm::begin(['action' => ['search/index']]); ?>
+                            <?= $form->field($model_searh, 'query')->textInput(['class' => 'input-search', 'placeholder' => "Нажмите Enter", 'autocomplete' => "off"])->label('') ?>
+                        <?php ActiveForm::end(); ?>
+                    </li>
+                </ul>
         <?php endif; ?>
         <?php if(!Yii::$app->user->isGuest): ?>
             <li><a href="<?= Url::toRoute(['/admin/default/index']); ?>">ADMIN</a></li>
             <li><a href="<?= Url::toRoute(['/login/logout']); ?>">ВЫЙТИ<?= '('.Yii::$app->user->identity->username.')'?></a></li>
+            <li><span class="glyphicon glyphicon-search "></span><span class="search-sp">ПОИСК</span></li>
+                <ul id="search">
+                    <li>
+                        <?php $form = ActiveForm::begin(['action' => ['search/index']]); ?>
+                            <?= $form->field($model_searh, 'query')->textInput(['class' => 'input-search', 'placeholder' => "Нажмите Enter", 'autocomplete' => "off"])->label('') ?>
+                        <?php ActiveForm::end(); ?>
+                    </li>
+                </ul>
         <?php endif; ?>
     </ul>
 </div>

@@ -67,6 +67,7 @@ nav{
     width: 100%;
     height: 30px;
     background-color: #ededed;
+    
 }
 
 .for-admin ul {
@@ -75,16 +76,55 @@ nav{
     float: right;
     height: 30px;
     list-style: none;
+    position: relative;
 }
 
 .for-admin ul li{
     display: inline-block;
+    padding: 0;
 }
 
 .for-admin ul li a{
     padding: 8px 15px;
     font-size: 10px;
-    display: inline-block
+    cursor: pointer;
+}
+
+.for-admin ul li span{
+    padding: 6px 3px 6px 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.for-admin ul li span.search-sp{
+    font-family: "Elektra Light Pro", sans-serif !important;
+    font-size: 10px;
+    padding: 5px 3px 5px 0;
+}
+
+.for-admin ul#search{
+    position: absolute;
+    top: 30px;
+    right: 0;
+    display: none;
+    z-index: 4000;
+}
+
+.for-admin ul#search label{
+    display: none;
+}
+
+.for-admin ul#search form input.input-search{
+	width: 250px;
+	height: 40px;
+}
+
+.for-admin ul#search form{
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.for-admin ul#search li{
+	padding: 0;
 }
 
 .for-users:after{
@@ -93,7 +133,7 @@ nav{
     clear: both;
 }
 
-.for-users a, .for-admin a{
+.for-users a, .for-admin a, .for-admin span{
     color: rgb(30,24,70);
 }
 

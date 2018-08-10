@@ -18,9 +18,9 @@ $config = [
             'cookieValidationKey' => 'DT-ipHMHGwWyJpo6U9oauZWjpmsR_sPc',
             'baseUrl' => ''
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
+        //'cache' => [
+            //'class' => 'yii\caching\FileCache',
+        //],
         'user' => [
             'identityClass' => 'app\models\User',
             'loginUrl' => ['login'],
@@ -51,13 +51,20 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'search/index' => 'search',
+                'search/index/<page:[\w]+>/<query:[\w-]+>' => 'search/index',
+                
                 'site' => 'site/index',
+                
                 'login' => 'login/index',
                 'login/logout' => 'login/logout',
+                
                 'contacts' => 'contacts/index',
+                
                 'news' => 'news/index',
                 'news/ajax' => 'news/ajax',
-                'news/article/<alias:[\w-]+>' => 'news/article',
+                'news/<alias:[\w-]+>' => 'news',
+                
                 'admin/<controller:[\w-]+>/<action:[\w-]+>'  =>  'admin/<controller>/<action>',
                 'admin/<controller:[\w-]+>/<action:[\w-]+>/<id:[\w-]+>' => 'admin/<controller>/<action>',         
                 
@@ -65,7 +72,6 @@ $config = [
                 '<controller>/<action>' => 'handler/index',
                 '<controller>/<action>/<alias:[\w-]+>' => 'handler/index',
                 
-                //'<controller:[\w-]+>/<alias:[\w-]+>' => '<controller>',
                 '<controller:[\w-]+>/<action:[\w-]+>/<alias:[\w-]+>' => '<controller>/<action>',   
             ],
         ],

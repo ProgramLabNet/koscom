@@ -10,8 +10,13 @@ class NewsController extends \yii\web\Controller
 {
     public $layout;
     
-    public function actionIndex()
+    public function actionIndex($alias=null)
     {
+        if($alias)
+        {
+            return $this->actionArticle($alias);
+        }
+        
         $this->layout = 'news';
         
         $categories = new Categories();
@@ -57,12 +62,16 @@ class NewsController extends \yii\web\Controller
     {
         $this->layout = 'article';
         
+        
         $alias = trim(stripslashes(htmlspecialchars($alias)));
+        
+        
         
         $articles = new Articles();
         $categories = new Categories();
         
         $article = $articles->getArticleByAlias($alias);
+        
         
         if($article->category_id){
             $lastArticles = $articles->getLastArticles($article->category_id, $article->id);

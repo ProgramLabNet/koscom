@@ -25,7 +25,7 @@
             <?php foreach($lastArticles as $lastArticle): ?>
                 <div>
                     <div>
-                        <span><a href="<?= Url::toRoute(['news/article', 'alias' => (($lastArticle->alias ) ? $lastArticle->alias : null) ]) ?>"><span class="glyphicon glyphicon-ok"></span>&nbsp;<?= $lastArticle->title ?></a></span>
+                        <span><a href="<?= Url::toRoute(['/news', 'alias' => (($lastArticle->alias ) ? $lastArticle->alias : null) ]) ?>"><span class="glyphicon glyphicon-ok"></span>&nbsp;<?= $lastArticle->title ?></a></span>
                     </div>
                     <div>
                         <span><?= Articles::getDate($lastArticle->created_at) ?></span>

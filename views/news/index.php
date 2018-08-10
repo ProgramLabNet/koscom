@@ -14,7 +14,7 @@
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 news-cols">
             <div class="news-size">
                 <div class="news-image">
-                    <a  class="link-img" href="<?= Url::toRoute(['news/article', 'alias' => $one_news->alias]) ?>">
+                    <a  class="link-img" href="<?= Url::toRoute(['/news', 'alias' => $one_news->alias]) ?>">
                         <div class="wrap-img">
                             <div class="img-opacity"></div>
                             <img src="<?= ($one_news->preview_image) ? Articles::getPreviewImage($one_news->preview_image) : Articles::getNoPreviewImage() ?>" alt="" />
@@ -22,9 +22,9 @@
                     </a>
                 </div>
                 <div class="news-text">
-                    <span class="news-title"><a href="<?= Url::toRoute(['news/article', 'alias' => $one_news->alias]) ?>"><?= $one_news->title ?></a></span>
+                    <span class="news-title"><a href="<?= Url::toRoute(['/news', 'alias' => $one_news->alias]) ?>"><?= $one_news->title ?></a></span>
                     <span class="news-created">Новости&nbsp&nbsp&ndash;&nbsp&nbsp<?= Articles::getDate($one_news->created_at) ?></span>
-                    <span class="news-more"><a href="<?= Url::toRoute(['news/article', 'alias' => $one_news->alias]) ?>">Подробнее...</a></span>
+                    <span class="news-more"><a href="<?= Url::toRoute(['/news', 'alias' => $one_news->alias]) ?>">Подробнее...</a></span>
                 </div>
             </div>
         </div>
