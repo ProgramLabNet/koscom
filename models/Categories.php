@@ -189,6 +189,12 @@ class Categories extends \yii\db\ActiveRecord
     {
         return self::find()->andWhere(['url' => $url, 'status' => 1])->one();
     }
+    
+    public function getCategoryNameId($id)
+    {
+        $category = self::find()->andWhere(['id' => $id, 'status' => 1])->one();
+        return $category->name;
+    }
 
     /**
      * {@inheritdoc}

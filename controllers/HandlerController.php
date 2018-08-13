@@ -13,9 +13,7 @@ class HandlerController extends \yii\web\Controller
     
     public function actionIndex($alias=null)
     {
-        
-        $breadcrumbs_flag = FALSE;
-        
+     
         $categories = new Categories();
         $articles = new Articles();
         
@@ -41,30 +39,36 @@ class HandlerController extends \yii\web\Controller
             $article = $articles->getArticleByAlias($alias);
             $name = $article->category->name;
             $url = $article->category->url;
+            if($article->category->parent_id){
+                $parent_name = $categories->getCategoryNameId($article->category->parent_id);
+            }
             $category_article = $articles->getCategoryArticlesByCategoryIdAdnAlias($article->category_id);
         }
         else{
             $category = $categories->getCategoriesByUrl($query_url);
-            if($this->getCountArrItemsByUrl($category->url)){
-                $breadcrumbs_flag = TRUE;
-            }
             $name = $category->name;
             $url = $category->url;
+            if($category->parent_id)
+            {
+                $parent_name = $category->getCategoryNameId($category->parent_id);
+            }
             $category_article = $articles->getCategoryArticlesByCategoryIdAdnAlias($category->id);
             $article = $articles->getOneArticleByCategoryIdAndAlias($category->id);
         }
         
         if($article){
             $this->view->title = $article->title;
-            if($breadcrumbs_flag){
+            if($parent_name){
                 $this->view->params['breadcrumbs'] = [
-                    ['label' => Articles::cutArticleTitle($article->title)]
+                        ['label' =>  $parent_name],
+                        ['label' => $name, 'url' => [$url]],
+                        ['label' => Articles::cutArticleTitle($article->title)]
                 ];
             }
             else{
                 $this->view->params['breadcrumbs'] = [
-                    ['label' => $name, 'url' => [$url]],
-                    ['label' => Articles::cutArticleTitle($article->title)]
+                        ['label' => $name, 'url' => [$url]],
+                        ['label' => Articles::cutArticleTitle($article->title)]
                 ];
             }
             $view = '/handler/one_category';
@@ -91,22 +95,6 @@ class HandlerController extends \yii\web\Controller
                 
                 return $arr_param[1];
             }
-            return FALSE;
-        }
-        return FALSE;
-    }
-    
-    private function getCountArrItemsByUrl($url)
-    {
-        if($url){
-            $param = trim($url, '/');
-            
-            $arr_param = explode('/', $param);
-            
-            if(count($arr_param) == 1){
-                return TRUE;
-            }
-            
             return FALSE;
         }
         return FALSE;
