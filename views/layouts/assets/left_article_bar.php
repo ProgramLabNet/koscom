@@ -10,7 +10,7 @@
             <?php foreach($category_article as $k_article => $article): ?>
                 <div>
                     <div>
-                        <span><a href="<?= Url::toRoute([Categories::getUrlById($article->category_id), 'alias' => $article->alias ]) ?>"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;<?= $article->title ?></a></span>
+                        <span><a href="<?= Url::toRoute([Categories::getUrlById($article->category_id), 'alias' => (($article->alias) ? $article->alias : null) ]) ?>"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;<?= $article->title ?></a></span>
                         <?php if(count($category_article) !== ($k_article + 1)): ?>
                             <span class="article-bar-rubrika"></span>
                         <?php endif; ?>

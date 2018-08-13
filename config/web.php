@@ -52,7 +52,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'search/index' => 'search',
-                'search/index/<page:[\w]+>/<query:[\w-]+>' => 'search/index',
+                'search/index/<page:[\d]+>/<query:[\w-]+>' => 'search/index',
                 
                 'site' => 'site/index',
                 
@@ -72,6 +72,8 @@ $config = [
                 '<controller>/<action>' => 'handler/index',
                 '<controller>/<action>/<alias:[\w-]+>' => 'handler/index',
                 
+                
+                '<controller:[\w-]+>/<alias:[\w-]+>' => '<controller>', 
                 '<controller:[\w-]+>/<action:[\w-]+>/<alias:[\w-]+>' => '<controller>/<action>',   
             ],
         ],

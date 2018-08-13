@@ -54,13 +54,19 @@ nav{
     position: relative;
 }
 
-.for-users, .for-admin{
+.for-admin{
     padding-left: 15px;
     padding-right: 15px;
     background-color: #fff;
     font-size: 14px;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
     
+}
+
+.for-users{
+    background-color: #fff;
+    font-size: 14px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
 .for-admin{
@@ -162,10 +168,14 @@ nav{
 }
 
 ul.main-menu{
+    width: 100%;
     padding: 0 0 0 210px;
-    margin: 0;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: 0;
+    margin-top: 0;
     position: relative;
-    float: left;
+    float: right;
     z-index: 3999;
 }
 
@@ -217,20 +227,22 @@ ul.sub-menu li{
     opacity: 1;
     color: rgb(0,166,228);
 }
-
 .else-menu{
+    margin-left: -15px;
+    margin-right: -15px;
+    width: 100%;
     list-style: none;
     position: absolute;
     top: 100%;
-    right: 0;
-    padding: 0;
+    left: 0;
+    padding-left: 15px;
     background-color: #fff;
     opacity: 0;
     visibility: hidden;
     cursor: pointer;
     line-height: 2;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    display: block;
+    display: inline-block;
 }
 
 li.else:hover .else-menu{
