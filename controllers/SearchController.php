@@ -27,9 +27,16 @@ class SearchController extends \yii\web\Controller
             {
                 $query = Html::encode($model_search->query);
                 
-                $count = Articles::getSearchArticlesCount($query);
+                $total_count = Articles::getSearchArticlesCount($query);
                 
-                $count = ceil($count/9);
+                $total_count = ceil($total_count/9);
+                
+                if($total_count < 5){
+                    $count = $total_count;
+                }
+                else{
+                    $count = 5;
+                }
                 
                 $offset = 0;
                 
@@ -40,7 +47,9 @@ class SearchController extends \yii\web\Controller
             'search_query' => $search_query,
             'query' => $query,
             'count' => $count,
-            'page' => 1
+            'total_count' => $total_count,
+            'page' => 1,
+            'j' => 1
         ]);
     }
     
@@ -49,18 +58,34 @@ class SearchController extends \yii\web\Controller
         $page = Html::encode($page);
         $query = Html::encode($query);
        
-        $count = Articles::getSearchArticlesCount($query);
+        $total_count = Articles::getSearchArticlesCount($query);
                 
-        $count = ceil($count/9);
+        $total_count = ceil($total_count/9);
         
         $offset = ($page - 1 ) * 9;
         
         $search_query= Articles::getSearchArticles($query, $offset);
         
+        $count = ceil($page/5) * 5;
+        
+        if($total_count < 5){
+            $count = $total_count;
+            $j = 1;
+        }
+        else{
+            $j = $count - 5 + 1;
+        }
+        
+        if($count > $total_count){
+            $count = $count - ($count - $total_count);
+        }
+        
         return $this->render('index', [
             'search_query' => $search_query,
             'query' => $query,
             'count' => $count,
+            'j' => $j,
+            'total_count' => $total_count,
             'page' => $page
         ]);
     }

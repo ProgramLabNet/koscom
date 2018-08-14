@@ -55,13 +55,19 @@
     <?php if($count && ($count > 1)): ?>
         <div class="search-pager">
             <ul>
-                <li><a href="<?= Url::toRoute(['/search/index', 'page' => 1, 'query' => $query]) ?>"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-                <?php for($i=1; $i <= $count; $i++):?>
+                <?php if($page != 1): ?>
+                    <li><a href="<?= Url::toRoute(['/search/index', 'page' => $page-1, 'query' => $query]) ?>"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                <?php endif; ?>
+                <?php for($i=$j; $i <= $count; $i++):?>
                     <li>
                         <a class="<?= ($i == $page) ? 'pager-activ' : '' ?>" href="<?= Url::toRoute(['/search/index', 'page' => $i, 'query' => $query]) ?>"><?= $i ?></a>
                     </li>
                 <?php endfor; ?>
-                <li><a href="<?= Url::toRoute(['/search/index', 'page' => $count, 'query' => $query]) ?>"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                <?php if(($page) != $total_count): ?>
+                    .&nbsp;.&nbsp;.
+                    <li><a href="<?= Url::toRoute(['/search/index', 'page' => $total_count, 'query' => $query ]) ?>"><?= $total_count ?></a></li>
+                    <li><a href="<?= Url::toRoute(['/search/index', 'page' => ($page) ? $page+1 : 2, 'query' => $query]) ?>"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                <?php endif; ?>
             </ul>
         </div>
     <?php endif; ?>
