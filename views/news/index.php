@@ -23,8 +23,10 @@
                 </div>
                 <div class="news-text">
                     <span class="news-title"><a href="<?= Url::toRoute(['/news', 'alias' => $one_news->alias]) ?>"><?= $one_news->title ?></a></span>
-                    <span class="news-created">Новости&nbsp&nbsp&ndash;&nbsp&nbsp<?= Articles::getDate($one_news->created_at) ?></span>
-                    <span class="news-more"><a href="<?= Url::toRoute(['/news', 'alias' => $one_news->alias]) ?>">Подробнее...</a></span>
+                    <div class="wrap-bottom-spans">
+                        <span class="news-created">Новости&nbsp&nbsp&ndash;&nbsp&nbsp<?= Articles::getDate($one_news->created_at) ?></span>
+                        <span class="news-more"><a href="<?= Url::toRoute(['/news', 'alias' => $one_news->alias]) ?>">Подробнее...</a></span>
+                    </div>
                 </div>
             </div>
         </div>

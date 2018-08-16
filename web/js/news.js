@@ -38,7 +38,7 @@
                             $(".row").append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 news-cols">' +
                                                     '<div class="news-size">' +
                                                         '<div class="news-image">' +
-                                                            '<a class="link-img" href="/news/article/'+ value.alias +'">' +
+                                                            '<a class="link-img" href="/news/'+ value.alias +'">' +
                                                                 '<div class="wrap-img">' +
                                                                     '<div class="img-opacity"></div>' +
                                                                     '<img src="' + (value.preview_image ? "/web/uploads/preview/" + value.preview_image : "/web/public/no_image.png")  + '" alt="">' +
@@ -46,9 +46,11 @@
                                                             '</a>' +
                                                         '</div>' +
                                                         '<div class="news-text">'+
-                                                            '<span class="news-title"><a href="/news/article/'+ value.alias +'">' + value.title + '</a></span>' +
+                                                            '<span class="news-title"><a href="/news/'+ value.alias +'">' + value.title + '</a></span>' +
+                                                            '<div class="wrap-bottom-spans">' +
                                                             '<span class="news-created">Новости&nbsp&nbsp&ndash;&nbsp&nbsp'+ value.created_at +'</span>' +
-                                                            '<span class="news-more"><a href="/news/article/'+ value.alias +'">Подробнее...</a></span>'
+                                                            '<span class="news-more"><a href="/news/'+ value.alias +'">Подробнее...</a></span>' +
+                                                            '</div>'
                                                         + '</div>'
                                                     + '</div>'
                                                 + '</div>');

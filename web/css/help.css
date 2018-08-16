@@ -56,8 +56,6 @@ button.button-help:active{
 
 .news-image{
     width: 100%;
-    height: 263px;
-    overflow: hidden;
 }
 
 img.image-img{
@@ -99,7 +97,7 @@ div.news-image a:hover div.img-hover{
 
 .news-text{
     height: 150px;
-    margin: 20px;
+    padding: 20px;
 }
 
 .news-more{
@@ -123,13 +121,15 @@ div.news-image a:hover div.img-hover{
 }
 
 .news-title{
-    width: 230px;
-    position: absolute;
     font-size: 16px;
 }
 
 .news-title a{
     color: #3a3a3a;  
+}
+
+.wrap-bottom-spans{
+    
 }
 
 .article-main{
@@ -326,8 +326,35 @@ div.news-image a:hover div.img-hover{
 }
 
 /*медиа запросы*/
+@media (max-width: 1200px){
+    .news-size{
+        height: 510px;
+    }
+}
+
 @media (max-width: 992px){
     .article-body{
         margin-bottom: 20px;
+    }
+    .news-size{
+        height: 530px;
+    }
+}
+
+@media (max-width: 768px){
+    .news-size{
+        height: 850px;
+    }
+}
+
+@media (max-width: 640px){
+    .news-size{
+        height: 750px;
+    }
+}
+
+@media (max-width: 400px){
+    .news-size{
+        height: 520px;
     }
 }
