@@ -11,7 +11,7 @@
             <div class="col-lg-6 col-sm-6 col-sm-12 main-padding">
                 <div class="main-image">
                     <div class="main-page-link-wrap">
-                        <a href="<?= Url::toRoute([ Categories::getUrlById($article->category_id)]) ?>"><?= $article->title ?></a>
+                        <a href="<?= Url::toRoute([ Categories::getUrlById($article->category_id)]) ?>"><?= $article->category->name ?></a>
                     </div>
                     <a href="<?= Url::toRoute([ Categories::getUrlById($article->category_id)]) ?>">
                         <div class="img-opacity"></div>

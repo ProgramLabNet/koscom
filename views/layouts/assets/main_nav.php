@@ -20,6 +20,9 @@ $model_searh = new SearchForm();
 </div>
     <!--start Панель для админа-->
 <div class="for-admin">
+    <ul  class="admin-mail">
+        <li><span class="glyphicon glyphicon-envelope"></span>&nbsp;info@kos-com.ru</li>
+    </ul>
     <ul>
         <?php if(Yii::$app->user->isGuest): ?>
             <li><a href="<?= Url::toRoute(['/login']); ?>">ВОЙТИ</a></li>

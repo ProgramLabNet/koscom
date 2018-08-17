@@ -63,6 +63,15 @@ nav{
     
 }
 
+.for-admin ul.admin-mail{
+    float: left;
+}
+
+.for-admin ul.admin-mail li, .for-admin ul.admin-mail li span{
+    color: rgb(142,142,142) !important;
+    font-size: 13px;
+}
+
 .for-users{
     background-color: #fff;
     font-size: 14px;

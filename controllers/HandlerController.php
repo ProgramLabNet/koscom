@@ -13,7 +13,6 @@ class HandlerController extends \yii\web\Controller
     
     public function actionIndex($alias=null)
     {
-     
         $categories = new Categories();
         $articles = new Articles();
         
